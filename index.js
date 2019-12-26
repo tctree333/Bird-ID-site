@@ -1,6 +1,7 @@
+const base_url = "http://127.0.0.1:3000";
 const endpoints = {
   get: {
-    url: "http://localhost:3000/practice/get",
+    url: base_url + "/practice/get",
     parameters: {
       media: "images",
       bw: 0,
@@ -8,16 +9,31 @@ const endpoints = {
     }
   },
   check: {
-    url: "http://localhost:3000/practice/check",
+    url: base_url + "/practice/check",
     parameters: {
       guess: ""
     }
   },
   skip: {
-    url: "http://localhost:3000/practice/skip"
+    url: base_url + "/practice/skip"
   },
   hint: {
-    url: "http://localhost:3000/practice/hint"
+    url: base_url + "/practice/hint"
+  },
+  login: {
+    url: base_url + "/user/login",
+    parameters: {
+      redirect: ""
+    }
+  },
+  logout: {
+    url: base_url + "/user/logout",
+    parameters: {
+      redirect: ""
+    }
+  },
+  profile: {
+    url: base_url + "/user/profile"
   }
 };
 
@@ -76,6 +92,30 @@ function updateStatus(message) {
 }
 
 function pageLoad() {
+  $.ajax({
+    url: endpoints.profile.url,
+    success: function(data) {
+      $("#login-button").hide();
+      $("#logout-button").show();
+      $("#login-text")[0].innerText =
+        "Logged in as " + data.username + "#" + data.discriminator;
+      $("#login-text").show();
+      $("#profile-pic")[0].src = data.avatar_url;
+      $("#profile-pic").show();
+    },
+    statusCode: {
+      403: function() {
+        $("#login-button").show();
+        $("#logout-button").hide();
+        $("#login-text").hide();
+        $("#profile-pic").hide();
+      }
+    },
+    dataType: "json",
+    xhrFields: {
+      withCredentials: true
+    }
+  });
   setMedia("images");
   updateStats();
   $("#optionMenu").hide();
@@ -240,6 +280,15 @@ function hint() {
       withCredentials: true
     }
   });
+}
+
+function login() {
+  let currentPage = window.location.href;
+  window.location.href = endpoints.login.url + "?redirect=" + currentPage;
+}
+
+function logout() {
+  window.location.href = endpoints.logout.url;
 }
 
 function updateOptions() {
