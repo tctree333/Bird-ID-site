@@ -1,5 +1,5 @@
 Sentry.init({ dsn: 'https://dfe005fb9f5f419c9b849c8c01b73b7a@sentry.io/1866990' });
-const base_url = "https://bird-id.herokuapp.com/";
+const base_url = "https://bird-id.herokuapp.com";
 const endpoints = {
   get: {
     url: base_url + "/practice/get",
