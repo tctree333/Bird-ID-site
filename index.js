@@ -1,5 +1,5 @@
 Sentry.init({ dsn: 'https://dfe005fb9f5f419c9b849c8c01b73b7a@sentry.io/1866990' });
-const base_url = "https://bird-id.herokuapp.com";
+const base_url = "https://api.birdid.ga";
 const endpoints = {
   get: {
     url: base_url + "/practice/get",
@@ -284,7 +284,7 @@ function hint() {
 }
 
 function login() {
-  let currentPage = window.location.href;
+  let currentPage = window.location.pathname;
   window.location.href = endpoints.login.url + "?redirect=" + currentPage;
 }
 
