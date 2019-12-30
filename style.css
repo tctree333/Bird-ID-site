@@ -63,7 +63,7 @@ body.night #links a {
   transition: 0.5s;
 }
 
-#button {
+.button {
   background-color: #00E8CC;
   padding-top: 0.5%;
   padding-bottom: 0.5%;
@@ -73,12 +73,12 @@ body.night #links a {
   transition: 0.5s;
 }
 
-body.night #button strong {
+body.night .button strong {
   color: black;
   transition: 0.5s;
 }
 
-#button:hover {
+.button:hover {
   background-color: rgb(8, 170, 151);
 }
 
@@ -152,8 +152,8 @@ mark {
 }
 
 img {
-  width: 40%;
-  height: auto;
+  width: auto;
+  height: 25em;
   margin-left: 2%;
   margin-top: 2%;
 }
@@ -163,11 +163,12 @@ input {
 }
 
 input[type=text] {
-  width: 100%;
+  width: 50%;
   padding: 1%;
   font-size: 150%;
+  margin-left: 2%;
   margin-bottom: 5%;
-  float: right;
+  float: left;
 }
 
 input[type=submit],

@@ -13,13 +13,24 @@
   <!-- navigation bar -->
   <div id="navigator">
     <strong>Bird-ID</strong> - a website for aspiring ornithologists
+    <div class="toggle"></div>
     <div id="links">
       <a href="index.html"> About </a>
       <a href="contact.html"> Contact </a>
       <a href="use.html" id="button"><strong> Use! </strong></a>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.toggle').click(function () {
+        $('.toggle').toggleClass('active')
+        $('body').toggleClass('night')
+      })
+      $('.toggle').click()
+    })
+  </script>
 </body>
 
 </html>

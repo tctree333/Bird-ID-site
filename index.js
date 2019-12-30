@@ -95,6 +95,10 @@ function updateStatus(message) {
 }
 
 function pageLoad() {
+  $("#login-button").show();
+  $("#logout-button").hide();
+  $("#login-text").hide();
+  $("#profile-pic").hide();
   $.ajax({
     url: endpoints.profile.url,
     success: function(data) {
@@ -139,9 +143,7 @@ function setMedia(media, bw, addon) {
   if (mediaUrl.media == "images") {
     $("div.media").empty();
     $("div.media").append(
-      '<img id="media" alt="bird picture" src=' +
-        mediaUrl.url +
-        " />"
+      '<img id="media" alt="bird picture" src=' + mediaUrl.url + " />"
     );
     document.getElementById("media").addEventListener("error", function() {
       updateStatus("Trial Maxed! Log in to continue.");

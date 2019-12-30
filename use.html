@@ -23,17 +23,17 @@
         <div id="links">
             <a href="index.html"> About </a>
             <a href="contact.html"> Contact </a>
-            <a href="use2.html" id="button"><strong> Use! </strong></a>
+            <a id="login-button" class="button" onclick="login()"><strong>Login</strong></a>
+            <div class="profile">
+                <img id="profile-pic" alt="Profile Picture" height=50px onclick="profile()" src= />
+                <p id="login-text"></p>
+            </div>
+            <a id="logout-button" class="button" onclick="logout()"><strong>Logout</strong></a>
+
         </div>
     </div>
-    <div class="auth-div">
-        <button id="login-button" onclick="login()">Login</button>
-        <img id="profile-pic" alt="Profile Picture" height=50px src= />
-        <p id="login-text"></p>
-        <button id="logout-button" onclick="logout()">Logout</button>
-    </div>
-    <div class="media">
-    </div>
+
+    <div class="media"></div>
     <div type="text" class="input">
         <input id="guess" type="text">
         <button id="check" onclick="check()">Check</button>
@@ -69,6 +69,17 @@
         <p id="total">Total</p>
         <p id="streak">in a row</p>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.toggle').click(function () {
+                $('.toggle').toggleClass('active')
+                $('body').toggleClass('night')
+            })
+            $('.toggle').click()
+        })
+    </script>
 </body>
 
 </html>
