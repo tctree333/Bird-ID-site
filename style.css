@@ -151,6 +151,10 @@ mark {
   text-align: center;
 }
 
+.profile {
+  display: inline-block;
+}
+
 .media img {
   width: auto;
   height: 25em;
