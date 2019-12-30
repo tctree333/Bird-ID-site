@@ -1,4 +1,6 @@
-Sentry.init({ dsn: 'https://dfe005fb9f5f419c9b849c8c01b73b7a@sentry.io/1866990' });
+Sentry.init({
+  dsn: "https://dfe005fb9f5f419c9b849c8c01b73b7a@sentry.io/1866990"
+});
 const base_url = "https://api.birdid.ga";
 const endpoints = {
   get: {

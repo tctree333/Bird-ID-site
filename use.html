@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src=index.js></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bird-ID | Practice</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body onload="pageLoad()">
+    <!-- navigation bar -->
+    <div id="navigator">
+        <strong>Bird-ID</strong> - a website for aspiring ornithologists
+        <div class="toggle"></div>
+        <div id="links">
+            <a href="index.html"> About </a>
+            <a href="contact.html"> Contact </a>
+            <a href="use2.html" id="button"><strong> Use! </strong></a>
+        </div>
+    </div>
+    <div class="auth-div">
+        <button id="login-button" onclick="login()">Login</button>
+        <img id="profile-pic" alt="Profile Picture" height=50px src= />
+        <p id="login-text"></p>
+        <button id="logout-button" onclick="logout()">Logout</button>
+    </div>
+    <div class="media">
+    </div>
+    <div type="text" class="input" />
+    <input id="guess">
+    <button id="check" onclick="check()">Check</button>
+    <button id="refresh" onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)">Refresh</button>
+    <button id="skip" onclick="skip()">Skip</button>
+    <button id="hint" onclick="hint()">Hint</button>
+    <button id="options" onclick='$("#optionMenu").toggle()'>Options</button>
+    </div>
+    <div class="status"></div>
+    <div id="optionMenu">
+        <form>
+            <h3>Options</h3>
+            <h4>Media Type</h4>
+            <select class="mediaType" name="mediaType">
+                <option value="images">Images</option>
+                <option value="songs">Songs</option>
+            </select>
+            <h4>Black and White (for images)</h4>
+            <input class="bw" type="checkbox" name="bw"> black and white?<br>
+            <h4>Addons (for images)</h4>
+            <select class="addons" name="addons">
+                <option value="">None</option>
+                <option value="female">Female</option>
+                <option value="juvenile">Juvenile</option>
+            </select>
+        </form>
+        <button id="save" onclick="updateOptions()">Save Changes</button>
+    </div>
+    <div class="stats">
+        <h2>Stats:</h2>
+        <p id="correct">Correct</p>
+        <p id="total">Total</p>
+        <p id="streak">in a row</p>
+    </div>
+</body>
+
+</html>
