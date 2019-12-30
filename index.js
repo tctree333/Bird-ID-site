@@ -139,7 +139,7 @@ function setMedia(media, bw, addon) {
   if (mediaUrl.media == "images") {
     $("div.media").empty();
     $("div.media").append(
-      '<img id="media" alt="bird picture" height="300px" src=' +
+      '<img id="media" alt="bird picture" src=' +
         mediaUrl.url +
         " />"
     );

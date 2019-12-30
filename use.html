@@ -5,7 +5,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://browser.sentry-cdn.com/5.10.2/bundle.min.js"
-        integrity="sha384-ssBfXiBvlVC7bdA/VX03S88B5MwXQWdnpJRbUYFPgswlOBwETwTp6F3SMUNpo9M9" crossorigin="anonymous"></script>
+        integrity="sha384-ssBfXiBvlVC7bdA/VX03S88B5MwXQWdnpJRbUYFPgswlOBwETwTp6F3SMUNpo9M9" crossorigin="anonymous">
+    </script>
     <script src=index.js></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -33,13 +34,14 @@
     </div>
     <div class="media">
     </div>
-    <div type="text" class="input" />
-    <input id="guess">
-    <button id="check" onclick="check()">Check</button>
-    <button id="refresh" onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)">Refresh</button>
-    <button id="skip" onclick="skip()">Skip</button>
-    <button id="hint" onclick="hint()">Hint</button>
-    <button id="options" onclick='$("#optionMenu").toggle()'>Options</button>
+    <div type="text" class="input">
+        <input id="guess" type="text">
+        <button id="check" onclick="check()">Check</button>
+        <button id="refresh"
+            onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)">Refresh</button>
+        <button id="skip" onclick="skip()">Skip</button>
+        <button id="hint" onclick="hint()">Hint</button>
+        <button id="options" onclick='$("#optionMenu").toggle()'>Options</button>
     </div>
     <div class="status"></div>
     <div id="optionMenu">
