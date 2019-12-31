@@ -1,195 +1,147 @@
-p {
-  font-family: 'Source Sans Pro', sans-serif;
+* {
+	font-family: "Source Sans Pro", sans-serif;
 }
 
 body.night {
-  background-color: #001a25;
-  transition: 0.5s;
+	background-color: #001a25;
+	transition: 0.5s;
 }
 
 body {
-  background-color: white;
-  transition: 0.5s;
+	background-color: white;
+	transition: 0.5s;
 }
 
 a {
-  color: #FF4365;
-  text-decoration: none;
+	color: #ff4365;
+	text-decoration: none;
 }
 
 a:hover {
-  color: rgb(255, 138, 160);
+	color: rgb(255, 138, 160);
 }
 
 a:visited {
-  color: rgb(212, 57, 86);
+	color: rgb(212, 57, 86);
 }
-
 /*all navigator stuff*/
 #navigator {
-  display: inline-block;
-  width: 100%;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 150%;
-  padding: 1%;
-  border-bottom: solid black 2px;
-  /*position:fixed;*/
-  z-index: 1000;
-  background-color: white;
-  margin-top: 0%;
-  transition: 0.5s;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 130%;
+	padding: 1%;
+	border-bottom: solid black 2px;
+	/*position:fixed;*/
+	z-index: 1000;
+	background-color: white;
+	margin-top: 0%;
+	transition: 0.5s;
 }
 
 body.night #navigator {
-  background-color: #00151f;
-  border-bottom: solid white 2px;
-  transition: 0.5s;
+	background-color: #00151f;
+	border-bottom: solid white 2px;
+	transition: 0.5s;
 }
-
+#title {
+	flex-grow: 1;
+}
 #links {
-  float: right;
-  text-align: right;
-  width: 60%;
+	float: right;
+	text-align: right;
+	width: 60%;
 }
 
-#links a {
-  margin: 3%;
-  color: black;
-  transition: 0.5s;
+.nav-link {
+	cursor: pointer;
+	margin: max(5px, 0.5%);
+	padding: 0.5%;
+	color: black;
+	transition: 0.5s;
 }
 
-body.night #links a {
-  color: white;
-  transition: 0.5s;
+body.night .nav-link {
+	color: white;
+	transition: 0.5s;
 }
-
+#login-button {
+	padding-right: 1%;
+	padding-left: 1%;
+}
 .button {
-  background-color: #00E8CC;
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
-  padding-right: 3%;
-  padding-left: 3%;
-  border-radius: 5px;
-  transition: 0.5s;
+	background-color: #00e8cc;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	padding-right: 3%;
+	padding-left: 3%;
+	border-radius: 5px;
+	transition: 0.5s;
 }
 
 body.night .button strong {
-  color: black;
-  transition: 0.5s;
+	color: black;
+	transition: 0.5s;
 }
 
 .button:hover {
-  background-color: rgb(8, 170, 151);
+	background-color: rgb(8, 170, 151);
 }
 
 #info {
-  width: 70%;
-  margin: auto;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 120%;
+	width: 70%;
+	margin: auto;
+	/*font-family: "Source Sans Pro", sans-serif;*/
+	font-size: 120%;
 }
 
 body.night {
-  color: white;
+	color: white;
 }
 
 h2 {
-  font-family: 'Noto Sans', sans-serif;
-  color: #FF4365;
+	font-family: "Noto Sans", sans-serif;
+	color: #ff4365;
 }
 
 mark {
-  color: #FF4365;
-  background-color: transparent;
+	color: #ff4365;
+	background-color: transparent;
 }
 
 /* day night toggle */
 .toggle {
-  position: absolute;
-  top: 15%;
-  right: 50px;
-  background: #fff;
-  border: 2px solid #00151f;
-  width: 45px;
-  height: 20px;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: 0.5s;
+	flex-basis: 45px;
+	align-self: center;
+	background: #fff;
+	border: 2px solid #00151f;
+	width: 45px;
+	height: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+	transition: 0.5s;
 }
 
 .toggle.active {
-  background: #00151f;
-  border: 2px solid #fff;
+	background: #00151f;
+	border: 2px solid #fff;
 }
 
-.toggle:before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  background: #00151f;
-  border-radius: 50%;
-  transition: 0.5s;
+.toggle-button {
+	content: "";
+	position: relative;
+	top: 2px;
+	left: 2px;
+	width: 16px;
+	height: 16px;
+	background: #00151f;
+	border-radius: 50%;
+	transition: 0.5s;
 }
 
-.toggle.active:before {
-  left: 27px;
-  background: #fff;
-}
-
-/*FOR USE PAGE*/
-
-#side {
-  float: right;
-  width: 40%;
-}
-
-#side h2 {
-  color: black;
-  text-align: center;
-}
-
-.profile {
-  display: inline-block;
-}
-
-.media img {
-  width: auto;
-  height: 25em;
-  margin-left: 2%;
-  margin-top: 2%;
-}
-
-input {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-input[type=text] {
-  width: 50%;
-  padding: 1%;
-  font-size: 150%;
-  margin-left: 2%;
-  margin-bottom: 5%;
-  float: left;
-}
-
-input[type=submit],
-button {
-  background-color: #00E8CC;
-  text-decoration: none;
-  border: none;
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
-  padding-right: 3%;
-  padding-left: 3%;
-  float: right;
-  font-size: 110%;
-  border-radius: 5px;
-}
-
-input[type=submit]:hover,
-button:hover {
-  background-color: rgb(8, 170, 151);
+.toggle.active > .toggle-button {
+	left: 27px;
+	background: #fff;
 }
