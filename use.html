@@ -13,7 +13,7 @@
 		<!-- navigation bar -->
 		<div id="navigator">
 			<span id="title"><strong>Bird-ID</strong> - a website for aspiring ornithologists</span>
-			<div class="toggle active"><div class="toggle-button"></div></div>
+			<div id="toggle" class="active"><div id="toggle-button"></div></div>
 			<a href="index.html" class="nav-link"> About </a>
 			<a href="contact.html" class="nav-link"> Contact </a>
 			<a id="login-button" class="button nav-link" onclick="login()"><strong>Login</strong></a>
@@ -64,12 +64,23 @@
 				</button>
 			</div>
 		</div>
-		<div class="stats">
+		<div id="stats">
 			<h2 id="stats-header">Stats:</h2>
 			<p id="correct">Correct</p>
 			<p id="total">Total</p>
 			<p id="streak">in a row</p>
 		</div>
+		<noscript>
+			<style>
+				#main,
+				#stats,
+				#toggle,
+				#profile {
+					display: none;
+				}
+			</style>
+			Please turn on Javascript or use a different browser.
+		</noscript>
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.min.js"
 			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -83,8 +94,8 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$(".toggle").click(function() {
-					$(".toggle").toggleClass("active");
+				$("#toggle").click(function() {
+					$("#toggle").toggleClass("active");
 					$("body").toggleClass("night");
 				});
 			});

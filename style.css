@@ -112,7 +112,7 @@ mark {
 }
 
 /* day night toggle */
-.toggle {
+#toggle {
 	flex-basis: 45px;
 	align-self: center;
 	background: #fff;
@@ -124,12 +124,12 @@ mark {
 	transition: 0.5s;
 }
 
-.toggle.active {
+#toggle.active {
 	background: #00151f;
 	border: 2px solid #fff;
 }
 
-.toggle-button {
+#toggle-button {
 	content: "";
 	position: relative;
 	top: 2px;
@@ -141,7 +141,7 @@ mark {
 	transition: 0.5s;
 }
 
-.toggle.active > .toggle-button {
+#toggle.active > #toggle-button {
 	left: 27px;
 	background: #fff;
 }
