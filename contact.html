@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Bird-ID | Contact</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=block" rel="stylesheet" />
+	</head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Bird-ID | Contact</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
+	<body class="night">
+		<!-- navigation bar -->
+		<div id="navigator">
+			<span id="title"><strong>Bird-ID</strong> - a website for aspiring ornithologists</span>
+			<div id="toggle" class="active"><div id="toggle-button"></div></div>
+			<a href="index.html" class="nav-link"> About </a>
+			<a href="contact.html" class="nav-link"> Contact </a>
+			<a href="use.html" class="button nav-link"><strong> Use! </strong></a>
+		</div>
 
-<body>
-  <!-- navigation bar -->
-  <div id="navigator">
-    <strong>Bird-ID</strong> - a website for aspiring ornithologists
-    <div class="toggle"></div>
-    <div id="links">
-      <a href="index.html"> About </a>
-      <a href="contact.html"> Contact </a>
-      <a href="use.html" class="button"><strong> Use! </strong></a>
-    </div>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('.toggle').click(function () {
-        $('.toggle').toggleClass('active')
-        $('body').toggleClass('night')
-      })
-      $('.toggle').click()
-    })
-  </script>
-</body>
-
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#toggle").click(function() {
+					$("#toggle").toggleClass("active");
+					$("body").toggleClass("night");
+				});
+			});
+		</script>
+	</body>
 </html>

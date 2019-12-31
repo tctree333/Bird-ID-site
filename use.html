@@ -1,84 +1,105 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Bird-ID | Practice</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link href="use.css" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=block" rel="stylesheet" />
+	</head>
 
-<head>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://browser.sentry-cdn.com/5.10.2/bundle.min.js"
-        integrity="sha384-ssBfXiBvlVC7bdA/VX03S88B5MwXQWdnpJRbUYFPgswlOBwETwTp6F3SMUNpo9M9" crossorigin="anonymous">
-    </script>
-    <script src=index.js></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Bird-ID | Practice</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
+	<body onload="pageLoad()" class="night">
+		<!-- navigation bar -->
+		<div id="navigator">
+			<span id="title"><strong>Bird-ID</strong> - a website for aspiring ornithologists</span>
+			<div id="toggle" class="active"><div id="toggle-button"></div></div>
+			<a href="index.html" class="nav-link"> About </a>
+			<a href="contact.html" class="nav-link"> Contact </a>
+			<a id="login-button" class="button nav-link" onclick="login()"><strong>Login</strong></a>
+			<div class="profile">
+				<img id="profile-pic" alt="Profile Picture" height=50px onclick="profile()" src= />
+				<p id="login-text"></p>
+				<a id="logout-button" class="button" onclick="logout()"><strong>Logout</strong></a>
+			</div>
+		</div>
+		<div id="main">
+			<div class="status"></div>
+			<div class="media"></div>
+			<div type="text" id="input-fields">
+				<input id="guess" type="text" />
+				<button id="check" onclick="check()">Check</button>
+				<button id="refresh" onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)">
+					Refresh
+				</button>
+				<button id="skip" onclick="skip()">Skip</button>
+				<button id="hint" onclick="hint()">Hint</button>
+				<button id="options" onclick='$("#options-menu").toggle()'>
+					Options
+				</button>
+			</div>
+			<div id="options-menu">
+				<form id="options-form">
+					<h2 id="options-header">Options</h2>
+					<div id="media-type-field">
+						<span>Media Type:</span>
+						<select id="media-type" name="mediaType" onchange="onMediaTypeChange()">
+							<option value="images">Images</option>
+							<option value="songs">Songs</option>
+						</select>
+					</div>
+					<!--<h4>Black and White (for images)</h4>-->
+					<div id="bw-field"><input id="bw" type="checkbox" name="bw" /> Black and white?</div>
+					<div id="addons-field">
+						<span>Addons:</span>
+						<select id="addons" name="addons">
+							<option value="">None</option>
+							<option value="female">Female</option>
+							<option value="juvenile">Juvenile</option>
+						</select>
+					</div>
+				</form>
+				<button id="save" onclick="updateOptions()">
+					Save Changes
+				</button>
+			</div>
+		</div>
+		<div id="stats">
+			<h2 id="stats-header">Stats:</h2>
+			<p id="correct">Correct</p>
+			<p id="total">Total</p>
+			<p id="streak">in a row</p>
+		</div>
+		<noscript>
+			<style>
+				#main,
+				#stats,
+				#toggle,
+				#profile {
+					display: none;
+				}
+			</style>
+			Please turn on Javascript or use a different browser.
+		</noscript>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://browser.sentry-cdn.com/5.10.2/bundle.min.js"
+			integrity="sha384-ssBfXiBvlVC7bdA/VX03S88B5MwXQWdnpJRbUYFPgswlOBwETwTp6F3SMUNpo9M9"
+			crossorigin="anonymous"
+		></script>
 
-<body onload="pageLoad()">
-    <!-- navigation bar -->
-    <div id="navigator">
-        <strong>Bird-ID</strong> - a website for aspiring ornithologists
-        <div class="toggle"></div>
-        <div id="links">
-            <a href="index.html"> About </a>
-            <a href="contact.html"> Contact </a>
-            <a id="login-button" class="button" onclick="login()"><strong>Login</strong></a>
-            <div class="profile">
-                <img id="profile-pic" alt="Profile Picture" height=50px onclick="profile()" src= />
-                <p id="login-text"></p>
-                <a id="logout-button" class="button" onclick="logout()"><strong>Logout</strong></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="media"></div>
-    <div type="text" class="input">
-        <input id="guess" type="text">
-        <button id="check" onclick="check()">Check</button>
-        <button id="refresh"
-            onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)">Refresh</button>
-        <button id="skip" onclick="skip()">Skip</button>
-        <button id="hint" onclick="hint()">Hint</button>
-        <button id="options" onclick='$("#optionMenu").toggle()'>Options</button>
-    </div>
-    <div class="status"></div>
-    <div id="optionMenu">
-        <form>
-            <h3>Options</h3>
-            <h4>Media Type</h4>
-            <select class="mediaType" name="mediaType">
-                <option value="images">Images</option>
-                <option value="songs">Songs</option>
-            </select>
-            <h4>Black and White (for images)</h4>
-            <input class="bw" type="checkbox" name="bw"> black and white?<br>
-            <h4>Addons (for images)</h4>
-            <select class="addons" name="addons">
-                <option value="">None</option>
-                <option value="female">Female</option>
-                <option value="juvenile">Juvenile</option>
-            </select>
-        </form>
-        <button id="save" onclick="updateOptions()">Save Changes</button>
-    </div>
-    <div class="stats">
-        <h2>Stats:</h2>
-        <p id="correct">Correct</p>
-        <p id="total">Total</p>
-        <p id="streak">in a row</p>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.toggle').click(function () {
-                $('.toggle').toggleClass('active')
-                $('body').toggleClass('night')
-            })
-            $('.toggle').click()
-        })
-    </script>
-</body>
-
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#toggle").click(function() {
+					$("#toggle").toggleClass("active");
+					$("body").toggleClass("night");
+				});
+			});
+		</script>
+		<script src="index.js"></script>
+	</body>
 </html>

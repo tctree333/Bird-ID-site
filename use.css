@@ -1,0 +1,81 @@
+#main {
+	display: flex;
+	flex-direction: column;
+}
+
+#side {
+	float: right;
+	width: 40%;
+}
+
+#side h2 {
+	color: black;
+	text-align: center;
+}
+
+.profile {
+	display: inline-block;
+}
+
+.media img {
+	width: auto;
+	height: 25em;
+	margin-left: 2%;
+	margin-top: 2%;
+}
+
+input {
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+#guess {
+	flex-basis: max(40%, 320px);
+	flex-grow: 1;
+	width: 50%;
+	padding: 1%;
+	font-size: 140%;
+	float: left;
+	margin-right: 0.5%;
+}
+
+input[type="submit"],
+button {
+	background-color: #00e8cc;
+	text-decoration: none;
+	border: none;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	padding-right: 2%;
+	padding-left: 2%;
+	margin: 0.5%;
+	font-size: 110%;
+	border-radius: 5px;
+	text-align: center;
+}
+
+input[type="submit"]:hover,
+button:hover {
+	background-color: rgb(8, 170, 151);
+}
+
+#save {
+	margin-top: 0.5%;
+}
+
+#options-header,
+#stats-header {
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	font-size: 115%;
+}
+
+p {
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+}
+
+#input-fields {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
