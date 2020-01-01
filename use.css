@@ -130,3 +130,7 @@ p {
 	padding: 0 2%;
 	text-align: center;
 }
+#profile-button,
+#profile-dropdown {
+	display: none;
+}

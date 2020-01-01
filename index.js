@@ -53,13 +53,13 @@ let stats = {
 };
 
 function updateStats() {
-	$("#correct").innerText = stats.correct + " Correct Birds";
-	$("#total").innerText =
+	document.getElementById("correct").textContent = stats.correct + " Correct Birds";
+	document.getElementById("total").textContent =
 		stats.total +
 		" Total Birds (" +
 		Math.round((stats.correct / stats.total ? stats.correct / stats.total : "0") * 100) +
 		"%)";
-	$("#streak").innerText = stats.streak + " in a row";
+	document.getElementById("streak").textContent = stats.streak + " in a row";
 }
 
 function getMediaUrl(media, bw, addon) {
@@ -84,9 +84,9 @@ function updateStatus(message) {
 }
 
 function pageLoad() {
-	$("#login-button").show();
+	/*$("#login-button").show();
 	$("#profile-dropdown").hide();
-	$("#profile-button").hide();
+	$("#profile-button").hide();*/
 	$.ajax({
 		url: endpoints.profile.url,
 		success: function(data) {
@@ -130,6 +130,14 @@ function setMedia(media, bw, addon) {
 			let width = $("#media").width() + $("#media").offset().left * 2;
 			if (width > $("body").width()) {
 				$("body").width(width);
+				//redraw buttons due to layout bugs
+				//from https://stackoverflow.com/questions/8840580/force-dom-redraw-refresh-on-chrome-mac
+				$("#login-button")
+					.hide()
+					.show(0);
+				$("#input-fields")
+					.hide()
+					.show(0);
 			}
 		});
 		document.getElementById("media").addEventListener("error", function() {
@@ -160,7 +168,7 @@ function setMedia(media, bw, addon) {
 			});
 		}
 	} else {
-		throw new Errror('invalid media type "' + mediaUrl.media + '"');
+		throw new Error('invalid media type "' + mediaUrl.media + '"');
 	}
 }
 
