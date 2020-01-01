@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Bird-ID | Practice</title>
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<link href="use.css" rel="stylesheet" type="text/css" />
-		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=block" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=block" rel="stylesheet" />
 	</head>
 
 	<body onload="pageLoad()" class="night">
@@ -97,12 +97,11 @@
 			crossorigin="anonymous"
 		></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#toggle").click(function() {
-					$("#toggle").toggleClass("active");
-					$("body").toggleClass("night");
-				});
+		<script>
+			let toggle = document.getElementById("toggle");
+			toggle.addEventListener("click", function() {
+				toggle.classList.toggle("active");
+				document.getElementsByTagName("body")[0].classList.toggle("night");
 			});
 		</script>
 		<script src="index.js"></script>

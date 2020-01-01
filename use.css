@@ -141,4 +141,7 @@ p {
 		width: 95vw;
 		height: auto;
 	}
+	#navigator {
+		font-size: 95%;
+	}
 }
