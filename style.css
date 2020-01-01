@@ -64,6 +64,9 @@ body.night #navigator {
 	transition: 0.5s;
 }
 
+.nav-link:visited {
+	color: black;
+}
 body.night .nav-link {
 	color: white;
 	transition: 0.5s;

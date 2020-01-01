@@ -79,7 +79,9 @@ p {
 	align-items: center;
 	flex-wrap: wrap;
 }
-
+#login-button:hover {
+	color: black;
+}
 /* profile stuff*/
 #profile {
 	position: relative;
