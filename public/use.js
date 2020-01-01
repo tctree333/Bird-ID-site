@@ -88,8 +88,8 @@ function pageLoad() {
 		url: endpoints.profile.url,
 		success: function(data) {
 			$("#login-button").hide();
-			$("#profile-name").innerText = data.username + "#" + data.discriminator;
-			$("#profile-pic").src = data.avatar_url;
+			$("#profile-name")[0].innerText = data.username + "#" + data.discriminator;
+			$("#profile-pic")[0].src = data.avatar_url;
 			$("#profile-button").show();
 		},
 		statusCode: {
