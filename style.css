@@ -29,7 +29,8 @@ a:visited {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: 100%;
+	align-items: center;
+	width: 98%;
 	font-family: "Noto Sans", sans-serif;
 	font-size: 130%;
 	padding: 1%;
@@ -67,11 +68,9 @@ body.night .nav-link {
 	color: white;
 	transition: 0.5s;
 }
-#login-button {
-	padding-right: 1%;
-	padding-left: 1%;
-}
+
 .button {
+	cursor: pointer;
 	background-color: #00e8cc;
 	padding-top: 0.5%;
 	padding-bottom: 0.5%;

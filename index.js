@@ -53,13 +53,13 @@ let stats = {
 };
 
 function updateStats() {
-	$("#correct")[0].innerText = stats.correct + " Correct Birds";
-	$("#total")[0].innerText =
+	$("#correct").innerText = stats.correct + " Correct Birds";
+	$("#total").innerText =
 		stats.total +
 		" Total Birds (" +
 		Math.round((stats.correct / stats.total ? stats.correct / stats.total : "0") * 100) +
 		"%)";
-	$("#streak")[0].innerText = stats.streak + " in a row";
+	$("#streak").innerText = stats.streak + " in a row";
 }
 
 function getMediaUrl(media, bw, addon) {
@@ -85,25 +85,21 @@ function updateStatus(message) {
 
 function pageLoad() {
 	$("#login-button").show();
-	$("#logout-button").hide();
-	$("#login-text").hide();
-	$("#profile-pic").hide();
+	$("#profile-dropdown").hide();
+	$("#profile-button").hide();
 	$.ajax({
 		url: endpoints.profile.url,
 		success: function(data) {
 			$("#login-button").hide();
-			$("#logout-button").show();
-			$("#login-text")[0].innerText = "Logged in as " + data.username + "#" + data.discriminator;
-			$("#login-text").show();
-			$("#profile-pic")[0].src = data.avatar_url;
-			$("#profile-pic").show();
+			$("#profile-name").innerText = data.username + "#" + data.discriminator;
+			$("#profile-pic").src = data.avatar_url;
+			$("#profile-button").show();
 		},
 		statusCode: {
 			403: function() {
 				$("#login-button").show();
-				$("#logout-button").hide();
-				$("#login-text").hide();
-				$("#profile-pic").hide();
+				$("#profile-dropdown").hide();
+				$("#profile-button").hide();
 			}
 		},
 		dataType: "json",
@@ -129,6 +125,13 @@ function setMedia(media, bw, addon) {
 	if (mediaUrl.media == "images") {
 		$("div.media").empty();
 		$("div.media").append('<img id="media" alt="bird picture" src=' + mediaUrl.url + " />");
+		// fixes bug where if image is larger than 100% width, then the other content doesn't fill the entire page
+		document.getElementById("media").addEventListener("load", function() {
+			let width = $("#media").width() + $("#media").offset().left * 2;
+			if (width > $("body").width()) {
+				$("body").width(width);
+			}
+		});
 		document.getElementById("media").addEventListener("error", function() {
 			updateStatus("Trial Maxed! Log in to continue.");
 			$("#media").hide();
@@ -157,7 +160,7 @@ function setMedia(media, bw, addon) {
 			});
 		}
 	} else {
-		console.log("hmm");
+		throw new Errror('invalid media type "' + mediaUrl.media + '"');
 	}
 }
 

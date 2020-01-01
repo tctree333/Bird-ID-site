@@ -17,10 +17,15 @@
 			<a href="index.html" class="nav-link"> About </a>
 			<a href="contact.html" class="nav-link"> Contact </a>
 			<a id="login-button" class="button nav-link" onclick="login()"><strong>Login</strong></a>
-			<div class="profile">
-				<img id="profile-pic" alt="Profile Picture" height=50px onclick="profile()" src= />
-				<p id="login-text"></p>
-				<a id="logout-button" class="button" onclick="logout()"><strong>Logout</strong></a>
+			<div id="profile">
+				<button id="profile-button" onclick="$('#profile-dropdown').toggle()">
+					<img id="profile-pic" alt="Profile Picture" height="40px" />&#x25BC;
+				</button>
+				<div id="profile-dropdown">
+					<div id="login-text">Logged in as</div>
+					<div id="profile-name"></div>
+					<a id="logout-button" class="button" onclick="logout()"><strong>Logout</strong></a>
+				</div>
 			</div>
 		</div>
 		<div id="main">
