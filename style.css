@@ -31,7 +31,6 @@ a:visited {
 	flex-wrap: wrap;
 	align-items: center;
 	width: 98%;
-	font-family: "Noto Sans", sans-serif;
 	font-size: 130%;
 	padding: 1%;
 	border-bottom: solid black 2px;
@@ -81,6 +80,7 @@ body.night .nav-link {
 	padding-left: 3%;
 	border-radius: 5px;
 	transition: 0.5s;
+	text-align: center;
 }
 
 body.night .button strong {
@@ -95,7 +95,6 @@ body.night .button strong {
 #info {
 	width: 70%;
 	margin: auto;
-	/*font-family: "Source Sans Pro", sans-serif;*/
 	font-size: 120%;
 }
 
@@ -104,7 +103,6 @@ body.night {
 }
 
 h2 {
-	font-family: "Noto Sans", sans-serif;
 	color: #ff4365;
 }
 

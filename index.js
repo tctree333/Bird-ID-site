@@ -84,9 +84,6 @@ function updateStatus(message) {
 }
 
 function pageLoad() {
-	/*$("#login-button").show();
-	$("#profile-dropdown").hide();
-	$("#profile-button").hide();*/
 	$.ajax({
 		url: endpoints.profile.url,
 		success: function(data) {
@@ -125,21 +122,6 @@ function setMedia(media, bw, addon) {
 	if (mediaUrl.media == "images") {
 		$("div.media").empty();
 		$("div.media").append('<img id="media" alt="bird picture" src=' + mediaUrl.url + " />");
-		// fixes bug where if image is larger than 100% width, then the other content doesn't fill the entire page
-		document.getElementById("media").addEventListener("load", function() {
-			let width = $("#media").width() + $("#media").offset().left * 2;
-			if (width > $("body").width()) {
-				$("body").width(width);
-				//redraw buttons due to layout bugs
-				//from https://stackoverflow.com/questions/8840580/force-dom-redraw-refresh-on-chrome-mac
-				$("#login-button")
-					.hide()
-					.show(0);
-				$("#input-fields")
-					.hide()
-					.show(0);
-			}
-		});
 		document.getElementById("media").addEventListener("error", function() {
 			updateStatus("Trial Maxed! Log in to continue.");
 			$("#media").hide();
