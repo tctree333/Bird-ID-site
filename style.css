@@ -29,8 +29,8 @@ a:visited {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: 100%;
-	font-family: "Noto Sans", sans-serif;
+	align-items: center;
+	width: 98%;
 	font-size: 130%;
 	padding: 1%;
 	border-bottom: solid black 2px;
@@ -63,15 +63,16 @@ body.night #navigator {
 	transition: 0.5s;
 }
 
+.nav-link:visited {
+	color: black;
+}
 body.night .nav-link {
 	color: white;
 	transition: 0.5s;
 }
-#login-button {
-	padding-right: 1%;
-	padding-left: 1%;
-}
+
 .button {
+	cursor: pointer;
 	background-color: #00e8cc;
 	padding-top: 0.5%;
 	padding-bottom: 0.5%;
@@ -79,6 +80,7 @@ body.night .nav-link {
 	padding-left: 3%;
 	border-radius: 5px;
 	transition: 0.5s;
+	text-align: center;
 }
 
 body.night .button strong {
@@ -93,7 +95,6 @@ body.night .button strong {
 #info {
 	width: 70%;
 	margin: auto;
-	/*font-family: "Source Sans Pro", sans-serif;*/
 	font-size: 120%;
 }
 
@@ -102,7 +103,6 @@ body.night {
 }
 
 h2 {
-	font-family: "Noto Sans", sans-serif;
 	color: #ff4365;
 }
 

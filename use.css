@@ -20,34 +20,33 @@
 .media img {
 	width: auto;
 	height: 25em;
-	margin-left: 2%;
-	margin-top: 2%;
-}
-
-input {
-	font-family: "Source Sans Pro", sans-serif;
+	margin: 5px 0;
 }
 
 #guess {
-	flex-basis: max(40%, 320px);
+	flex-basis: 40%;
 	flex-grow: 1;
-	width: 50%;
+	width: 40%;
 	padding: 1%;
 	font-size: 140%;
 	float: left;
-	margin-right: 0.5%;
+	margin-right: 3px;
+	margin-bottom: 3px;
 }
 
+#controls {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
 input[type="submit"],
-button {
+button,
+#profile-dropdown {
 	background-color: #00e8cc;
 	text-decoration: none;
 	border: none;
-	padding-top: 0.5%;
-	padding-bottom: 0.5%;
-	padding-right: 2%;
-	padding-left: 2%;
-	margin: 0.5%;
+	padding: 0.5% 2%;
+	margin: 3px;
 	font-size: 110%;
 	border-radius: 5px;
 	text-align: center;
@@ -74,8 +73,75 @@ p {
 	margin-block-end: 0.5em;
 }
 
-#input-fields {
+#login-button:hover {
+	color: black;
+}
+
+/* profile stuff*/
+#profile {
+	position: relative;
+}
+#profile-pic {
+	border-radius: 5px;
+	margin: 3px;
+}
+
+#profile-button {
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
+	font-size: 80%;
+}
+
+#profile-button.active {
+	border-bottom-left-radius: 0;
+	margin-bottom: 0;
+}
+
+#profile-dropdown {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	left: auto;
+	right: 0;
+	z-index: 1;
+	padding: 0;
+	margin-top: 2px;
+}
+
+#logout-button {
+	align-self: stretch;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top: 1.5px solid #e1e4e8;
+	padding: 1%;
+	font-size: 80%;
+}
+
+#login-text,
+#profile-name {
+	color: black;
+	font-size: 60%;
+	margin: 0 3px;
+	padding: 0 2%;
+	text-align: center;
+}
+#profile-button,
+#profile-dropdown {
+	display: none;
+}
+/* small screen stuff */
+@media (max-width: 480px) {
+	#guess {
+		align-self: stretch;
+		width: 95%;
+	}
+	.media img {
+		width: 95vw;
+		height: auto;
+	}
+	#navigator {
+		font-size: 95%;
+	}
 }
