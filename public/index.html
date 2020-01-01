@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<title>Bird-ID | About</title>
 		<link href="style.css" rel="stylesheet" type="text/css" />
-		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Source+Sans+Pro&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
 	</head>
 
 	<body class="night">
@@ -56,13 +56,11 @@
 				</p>
 			</div>
 		</div>
-		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		<script>
-			$(document).ready(function() {
-				$("#toggle").click(function() {
-					$("#toggle").toggleClass("active");
-					$("body").toggleClass("night");
-				});
+			let toggle = document.getElementById("toggle");
+			toggle.addEventListener("click", function() {
+				toggle.classList.toggle("active");
+				document.getElementsByTagName("body")[0].classList.toggle("night");
 			});
 		</script>
 		<noscript>

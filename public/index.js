@@ -53,13 +53,13 @@ let stats = {
 };
 
 function updateStats() {
-	$("#correct")[0].innerText = stats.correct + " Correct Birds";
-	$("#total")[0].innerText =
+	document.getElementById("correct").textContent = stats.correct + " Correct Birds";
+	document.getElementById("total").textContent =
 		stats.total +
 		" Total Birds (" +
 		Math.round((stats.correct / stats.total ? stats.correct / stats.total : "0") * 100) +
 		"%)";
-	$("#streak")[0].innerText = stats.streak + " in a row";
+	document.getElementById("streak").textContent = stats.streak + " in a row";
 }
 
 function getMediaUrl(media, bw, addon) {
@@ -84,26 +84,19 @@ function updateStatus(message) {
 }
 
 function pageLoad() {
-	$("#login-button").show();
-	$("#logout-button").hide();
-	$("#login-text").hide();
-	$("#profile-pic").hide();
 	$.ajax({
 		url: endpoints.profile.url,
 		success: function(data) {
 			$("#login-button").hide();
-			$("#logout-button").show();
-			$("#login-text")[0].innerText = "Logged in as " + data.username + "#" + data.discriminator;
-			$("#login-text").show();
-			$("#profile-pic")[0].src = data.avatar_url;
-			$("#profile-pic").show();
+			$("#profile-name").innerText = data.username + "#" + data.discriminator;
+			$("#profile-pic").src = data.avatar_url;
+			$("#profile-button").show();
 		},
 		statusCode: {
 			403: function() {
 				$("#login-button").show();
-				$("#logout-button").hide();
-				$("#login-text").hide();
-				$("#profile-pic").hide();
+				$("#profile-dropdown").hide();
+				$("#profile-button").hide();
 			}
 		},
 		dataType: "json",
@@ -157,7 +150,7 @@ function setMedia(media, bw, addon) {
 			});
 		}
 	} else {
-		console.log("hmm");
+		throw new Error('invalid media type "' + mediaUrl.media + '"');
 	}
 }
 
