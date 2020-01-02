@@ -19,7 +19,7 @@
 
 .media img {
 	width: auto;
-	height: 25em;
+	height: 20em;
 	margin: 5px 0;
 }
 
@@ -124,7 +124,7 @@ p {
 	color: black;
 	font-size: 60%;
 	margin: 0 3px;
-	padding: 0 2%;
+	padding: 0 2px;
 	text-align: center;
 }
 #profile-button,
