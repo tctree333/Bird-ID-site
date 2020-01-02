@@ -213,7 +213,7 @@ function skip() {
 					data.answer +
 					" (<em>" +
 					data.sciname +
-					"</em>) <a href=" +
+					"</em>) <a target=_blank href=" +
 					data.wiki +
 					" >Wiki</a></p>"
 			);
