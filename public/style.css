@@ -31,19 +31,20 @@ a:visited {
 	flex-wrap: wrap;
 	align-items: center;
 	width: 98%;
-	font-size: 130%;
 	padding: 1%;
-	border-bottom: solid black 2px;
-	/*position:fixed;*/
-	z-index: 1000;
-	background-color: white;
 	margin-top: 0%;
+	z-index: 1000;
+	font-size: 130%;
+	background-color: white;
+	border-bottom: solid black 2px;
+	color: black;
 	transition: 0.5s;
 }
 
 body.night #navigator {
 	background-color: #00151f;
 	border-bottom: solid white 2px;
+	color: white;
 	transition: 0.5s;
 }
 #title {
@@ -92,6 +93,9 @@ body.night .button strong {
 	background-color: rgb(8, 170, 151);
 }
 
+#use-button {
+	color: black;
+}
 #info {
 	width: 70%;
 	margin: auto;

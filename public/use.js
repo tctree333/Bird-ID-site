@@ -90,7 +90,7 @@ function pageLoad() {
 			$("#login-button").hide();
 			$("#profile-name")[0].innerText = data.username + "#" + data.discriminator;
 			$("#profile-pic")[0].src = data.avatar_url;
-			$("#profile-button").show();
+			$("#profile-button").css("display", "flex");
 		},
 		statusCode: {
 			403: function() {
@@ -275,4 +275,8 @@ function onMediaTypeChange() {
 		$("#bw-field").hide();
 		$("#addons-field").hide();
 	}
+}
+function toggleProfile() {
+	let dropdown = document.getElementById("profile-dropdown");
+	dropdown.style.display = dropdown.style.display == "none" ? "flex" : "none";
 }
