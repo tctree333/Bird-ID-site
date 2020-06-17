@@ -1,3 +1,6 @@
+[build]
+  base = "/public/"
+
 [[redirects]]
   from = "/*"
   to = "/status/404.html"
