@@ -1,4 +1,4 @@
-const base_url = "https://api.birdid.ga";
+const base_url = "https://api.orni.sciolyid.org";
 const endpoints = {
 	get: {
 		url: base_url + "/practice/get",
