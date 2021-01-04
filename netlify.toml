@@ -2,3 +2,8 @@
   from = "/*"
   to = "/status/404.html"
   status = 404
+
+[[redirects]]
+  from = "/use*"
+  to = "/status/maintenance"
+  status = 302
