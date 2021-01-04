@@ -165,9 +165,9 @@ function check() {
 					data.answer +
 					" (<em>" +
 					data.sciname +
-					"</em>) <a target=_blank href=" +
+					"</em>) <a target=\"_blank\" rel=\"noopener\" href=\"" +
 					data.wiki +
-					" >Wiki</a></p>"
+					"\" >Wiki</a></p>"
 			);
 			if (data.status == "correct") {
 				stats.correct++;
@@ -195,6 +195,7 @@ function check() {
 			withCredentials: true
 		}
 	});
+	plausible("Use", {props: {action: "Check"}});
 }
 
 function skip() {
@@ -210,9 +211,9 @@ function skip() {
 					data.answer +
 					" (<em>" +
 					data.sciname +
-					"</em>) <a target=_blank href=" +
+					"</em>) <a target=\"_blank\" rel=\"noopener\" href=\"" +
 					data.wiki +
-					" >Wiki</a></p>"
+					"\" >Wiki</a></p>"
 			);
 			setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 		},
@@ -227,6 +228,7 @@ function skip() {
 			withCredentials: true
 		}
 	});
+	plausible("Use", {props: {action: "Skip"}});
 }
 
 function hint() {
@@ -247,11 +249,13 @@ function hint() {
 			withCredentials: true
 		}
 	});
+	plausible("Use", {props: {action: "Hint"}});
 }
 
 function login() {
 	let currentPage = window.location.pathname;
 	window.location.href = endpoints.login.url + "?redirect=" + currentPage;
+	plausible("Use", {props: {action: "Login"}});
 }
 
 function logout() {
