@@ -4,6 +4,6 @@
   status = 404
 
 [[redirects]]
-  from = "/use*"
+  from = "/use"
   to = "/status/maintenance"
   status = 302
