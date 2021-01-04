@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/use"
+  from = "/use*"
   to = "/status/maintenance"
   status = 302
   force = true
