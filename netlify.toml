@@ -1,10 +1,4 @@
 [[redirects]]
-  from = "/use*"
-  to = "/status/maintenance"
-  status = 302
-  force = true
-
-[[redirects]]
   from = "/*"
-  to = "/status/404.html"
+  to = "/status/404/"
   status = 404
