@@ -267,6 +267,7 @@ function updateOptions() {
 	mediaOptions.bw = $("#bw").prop("checked") ? 1 : 0;
 	mediaOptions.addon = $("#addons").val();
 	$("#options-menu").hide();
+	setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 }
 function onMediaTypeChange() {
 	if ($("#media-type").val() === "images") {
