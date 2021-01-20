@@ -181,7 +181,7 @@ function check() {
 			$("input#guess").val("");
 		},
 		statusCode: {
-			406: function() {
+			422: function() {
 				updateStatus("<p class='fetching'><strong>An error occurred.</strong></p>");
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 			},
@@ -218,7 +218,7 @@ function skip() {
 			setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 		},
 		statusCode: {
-			406: function() {
+			422: function() {
 				updateStatus("<p class='fetching'><strong>An error occurred.</strong></p>");
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 			}
@@ -239,7 +239,7 @@ function hint() {
 			updateStatus("<p><strong>The first letter is </strong><em>" + data.hint + "</em>");
 		},
 		statusCode: {
-			406: function() {
+			422: function() {
 				updateStatus("<p class='fetching'><strong>An error occurred.</strong></p>");
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 			}
