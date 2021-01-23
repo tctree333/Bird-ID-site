@@ -105,8 +105,12 @@ function pageLoad() {
 	updateStats();
 	$("#options-menu").hide();
 	document.getElementById("guess").addEventListener("keypress", function(event) {
-		if (event.key === "Enter" && $("input#guess").val() !== "") {
-			check();
+		if (event.key === "Enter") {
+			if ($("input#guess").val() !== "") {
+				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)
+			} else {
+				check();
+			}
 		}
 	});
 }
