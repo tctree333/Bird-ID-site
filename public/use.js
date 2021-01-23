@@ -105,8 +105,7 @@ function pageLoad() {
 	updateStats();
 	$("#options-menu").hide();
 	document.getElementById("guess").addEventListener("keypress", function(event) {
-		// Number 13 is the "Enter" key on the keyboard
-		if (event.keyCode === 13) {
+		if (event.key === "Enter" && $("input#guess").val() !== "") {
 			check();
 		}
 	});
