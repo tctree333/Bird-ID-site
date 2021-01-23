@@ -106,7 +106,7 @@ function pageLoad() {
 	$("#options-menu").hide();
 	document.getElementById("guess").addEventListener("keypress", function(event) {
 		if (event.key === "Enter") {
-			if ($("input#guess").val() !== "") {
+			if ($("input#guess").val() === "") {
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)
 			} else {
 				check();
