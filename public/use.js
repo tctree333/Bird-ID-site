@@ -198,9 +198,6 @@ function check() {
 			withCredentials: true
 		}
 	});
-	if (Math.random() <= 0.01) { // sample
-		plausible("Use", {props: {action: "Check"}});
-	}
 }
 
 function skip() {
@@ -233,7 +230,6 @@ function skip() {
 			withCredentials: true
 		}
 	});
-	// plausible("Use", {props: {action: "Skip"}});
 }
 
 function hint() {
@@ -254,7 +250,6 @@ function hint() {
 			withCredentials: true
 		}
 	});
-	// plausible("Use", {props: {action: "Hint"}});
 }
 
 function login() {
