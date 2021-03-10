@@ -49,14 +49,41 @@ let stats = {
 	streak: 0
 };
 
+const qs = (s) => document.querySelector(s)
+const qsa = (s) => document.querySelectorAll(s)
+
+function fetchData(url, data, success, statusCode) {
+    const fetchUrl = new URL(url);
+    if (data) {
+        fetchUrl.search = new URLSearchParams(data).toString();
+    }
+  	const sentinal = new Object()
+    fetch(fetchUrl, {
+        method: "GET",
+        credentials: "include"
+    }).then((resp) => {
+        if (resp.status in statusCode) {
+            statusCode[resp.status]();
+        }
+        if (resp.ok) {
+            return resp.json();
+        }
+        return Promise.resolve(sentinal)
+    }).then((data) => {
+      if (data !== sentinal){
+        success(data);
+      }
+    });
+}
+
 function updateStats() {
-	document.getElementById("correct").textContent = stats.correct + " Correct Birds";
-	document.getElementById("total").textContent =
+	qs("#correct").textContent = stats.correct + " Correct Birds";
+	qs("#total").textContent =
 		stats.total +
 		" Total Birds (" +
 		Math.round((stats.correct / stats.total ? stats.correct / stats.total : "0") * 100) +
 		"%)";
-	document.getElementById("streak").textContent = stats.streak + " in a row";
+	qs("#streak").textContent = stats.streak + " in a row";
 }
 
 function getMediaUrl(media, bw, addon) {
@@ -76,37 +103,34 @@ function getMediaUrl(media, bw, addon) {
 }
 
 function updateStatus(message) {
-	$("div.status").empty();
-	$("div.status").append(message);
+	qs("div.status").childNodes.forEach((c)=>{c.remove()})
+	qs("div.status").innerHtml = message
 }
 
 function pageLoad() {
-	$.ajax({
-		url: endpoints.profile.url,
-		success: function(data) {
-			$("#login-button").hide();
-			$("#profile-name")[0].innerText = data.username + "#" + data.discriminator;
-			$("#profile-pic")[0].src = data.avatar_url;
-			$("#profile-button").css("display", "flex");
+	fetchData(
+		endpoints.profile.url,
+		false,
+		function(data) {
+			qs("#login-button").hidden = true;
+			qs("#profile-name").innerText = data.username + "#" + data.discriminator;
+			qs("#profile-pic").src = data.avatar_url;
+			qs("#profile-button").style.display = "flex";
 		},
-		statusCode: {
+		{
 			403: function() {
-				$("#login-button").show();
-				$("#profile-dropdown").hide();
-				$("#profile-button").hide();
+				qs("#login-button").hidden = false;
+				qs("#profile-dropdown").hidden = true;
+				qs("#profile-button").hidden = true;
 			}
-		},
-		dataType: "json",
-		xhrFields: {
-			withCredentials: true
 		}
-	});
+	);
 	setMedia("images");
 	updateStats();
-	$("#options-menu").hide();
-	document.getElementById("guess").addEventListener("keypress", function(event) {
+	qs("#options-menu").hidden = true;
+	qs("#guess").addEventListener("keypress", function(event) {
 		if (event.key === "Enter") {
-			if ($("input#guess").val() === "") {
+			if (qs("input#guess").value === "") {
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)
 			} else {
 				check();
@@ -116,37 +140,35 @@ function pageLoad() {
 }
 
 function setMedia(media, bw, addon) {
-	$("div.status").append("<p class='fetching' >Fetching new bird...</p>");
+	qs("div.status").innerHtml = "<p class='fetching' >Fetching new bird...</p>";
 	console.log("set called: " + media + bw + addon);
 	let mediaUrl = getMediaUrl(media, bw, addon);
 	if (mediaUrl.media == "images") {
-		$("div.media").empty();
-		$("div.media").append('<img id="media" alt="bird picture" src=' + mediaUrl.url + " />");
-		document.getElementById("media").addEventListener("error", function() {
+		qs("div.media").childNodes.forEach((c)=>{c.remove()})
+		qs("div.media").innerHtml = '<img id="media" alt="bird picture" src=' + mediaUrl.url + " />";
+		qs("#media").addEventListener("error", function() {
 			updateStatus("Trial Maxed! Log in to continue.");
-			$("#media").hide();
+			qs("#media").hidden = true;
 		});
-		if (document.getElementById("media").complete) {
-			$(".fetching").remove();
+		if (qs("#media").complete) {
+			qsa(".fetching").forEach((e)=>(e.remove()));
 		} else {
-			document.getElementById("media").addEventListener("load", function() {
-				$(".fetching").remove();
+			qs("#media").addEventListener("load", function() {
+				qsa(".fetching").forEach((e)=>(e.remove()));
 			});
 		}
 	} else if (mediaUrl.media == "songs") {
-		$("div.media").empty();
-		$("div.media").append(
-			'<audio id="media" controls src=' + mediaUrl.url + ">Your browser does not support audio.</audio>"
-		);
-		document.getElementById("media").addEventListener("error", function() {
+		qs("div.media").childNodes.forEach((c)=>{c.remove()})
+		qs("div.media").innerHtml = '<audio id="media" controls src=' + mediaUrl.url + ">Your browser does not support audio.</audio>";
+		qs("#media").addEventListener("error", function() {
 			updateStatus("Trial Maxed! Log in to continue.");
-			$("#media").hide();
+			qs("#media").hidden = true;
 		});
-		if (document.getElementById("media").complete) {
-			$(".fetching").remove();
+		if (qs("#media").complete) {
+			qsa(".fetching").forEach((e)=>(e.remove()));
 		} else {
-			document.getElementById("media").addEventListener("canplaythrough", function() {
-				$(".fetching").remove();
+			qs("#media").addEventListener("canplaythrough", function() {
+				qsa(".fetching").forEach((e)=>(e.remove()));
 			});
 		}
 	} else {
@@ -156,10 +178,10 @@ function setMedia(media, bw, addon) {
 
 function check() {
 	updateStatus("<p><strong>Checking...</strong></p>");
-	$.ajax({
-		url: endpoints.check.url,
-		data: { guess: $("input#guess").val() },
-		success: function(data) {
+	fetchData(
+		endpoints.check.url,
+		{ guess: qs("input#guess").value },
+		function(data) {
 			stats.total++;
 			updateStatus(
 				"<p><strong>You were " +
@@ -181,30 +203,27 @@ function check() {
 				updateStats();
 			}
 			setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
-			$("input#guess").val("");
+			qs("input#guess").value = "";
 		},
-		statusCode: {
+		{
 			422: function() {
 				updateStatus("<p class='fetching'><strong>An error occurred.</strong></p>");
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 			},
 			403: function() {
 				updateStatus("Trial Maxed! Log in to continue.");
-				$("#media").hide();
+				qs("#media").hidden = true;
 			}
 		},
-		dataType: "json",
-		xhrFields: {
-			withCredentials: true
-		}
-	});
+	);
 }
 
 function skip() {
 	updateStatus("<p><strong>Skipping...</strong></p>");
-	$.ajax({
-		url: endpoints.skip.url,
-		success: function(data) {
+	fetchData(
+		endpoints.skip.url,
+		false,
+		function(data) {
 			stats.streak = 0;
 			stats.total++;
 			updateStats();
@@ -219,37 +238,30 @@ function skip() {
 			);
 			setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 		},
-		statusCode: {
+		{
 			422: function() {
 				updateStatus("<p class='fetching'><strong>An error occurred.</strong></p>");
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 			}
-		},
-		dataType: "json",
-		xhrFields: {
-			withCredentials: true
 		}
-	});
+	);
 }
 
 function hint() {
 	updateStatus("<p><strong>Fetching Hint...</strong></p>");
-	$.ajax({
-		url: endpoints.hint.url,
-		success: function(data) {
+	fetchData(
+		endpoints.hint.url,
+		false,
+		function(data) {
 			updateStatus("<p><strong>The first letter is </strong><em>" + data.hint + "</em>");
 		},
-		statusCode: {
+		{
 			422: function() {
 				updateStatus("<p class='fetching'><strong>An error occurred.</strong></p>");
 				setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 			}
-		},
-		dataType: "json",
-		xhrFields: {
-			withCredentials: true
 		}
-	});
+	);
 }
 
 function login() {
@@ -263,22 +275,22 @@ function logout() {
 }
 
 function updateOptions() {
-	mediaOptions.media = $("#media-type").val();
-	mediaOptions.bw = $("#bw").prop("checked") ? 1 : 0;
-	mediaOptions.addon = $("#addons").val();
-	$("#options-menu").hide();
+	mediaOptions.media = qs("#media-type").value;
+	mediaOptions.bw = qs("#bw").checked ? 1 : 0;
+	mediaOptions.addon = qs("#addons").value;
+	qs("#options-menu").hidden = true;
 	setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 }
 function onMediaTypeChange() {
-	if ($("#media-type").val() === "images") {
-		$("#bw-field").show();
-		$("#addons-field").show();
+	if (qs("#media-type").value === "images") {
+		qs("#bw-field").hidden = false;
+		qs("#addons-field").hidden = false;
 	} else {
-		$("#bw-field").hide();
-		$("#addons-field").hide();
+		qs("#bw-field").hidden = true;
+		qs("#addons-field").hidden = true;
 	}
 }
 function toggleProfile() {
-	let dropdown = document.getElementById("profile-dropdown");
+	let dropdown = qs("#profile-dropdown");
 	dropdown.style.display = dropdown.style.display == "none" ? "flex" : "none";
 }
