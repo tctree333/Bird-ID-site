@@ -103,7 +103,6 @@ function getMediaUrl(media, bw, addon) {
 }
 
 function updateStatus(message) {
-	qs("div.status").childNodes.forEach((c)=>{c.remove()})
 	qs("div.status").innerHTML = message
 }
 
@@ -140,11 +139,10 @@ function pageLoad() {
 }
 
 function setMedia(media, bw, addon) {
-	qs("div.status").innerHTML = "<p class='fetching' >Fetching new bird...</p>";
+	qs("div.status").innerHTML += "<p class='fetching' >Fetching new bird...</p>";
 	console.log("set called: " + media + bw + addon);
 	let mediaUrl = getMediaUrl(media, bw, addon);
 	if (mediaUrl.media == "images") {
-		qs("div.media").childNodes.forEach((c)=>{c.remove()})
 		qs("div.media").innerHTML = '<img id="media" alt="bird picture" src=' + mediaUrl.url + " />";
 		qs("#media").addEventListener("error", function() {
 			updateStatus("Trial Maxed! Log in to continue.");
@@ -158,7 +156,6 @@ function setMedia(media, bw, addon) {
 			});
 		}
 	} else if (mediaUrl.media == "songs") {
-		qs("div.media").childNodes.forEach((c)=>{c.remove()})
 		qs("div.media").innerHTML = '<audio id="media" controls src=' + mediaUrl.url + ">Your browser does not support audio.</audio>";
 		qs("#media").addEventListener("error", function() {
 			updateStatus("Trial Maxed! Log in to continue.");
