@@ -1,126 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Bird-ID | Practice</title>
-		<link href="/style.css" rel="stylesheet" type="text/css" />
-		<link href="/use.css" rel="stylesheet" type="text/css" />
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=block" rel="stylesheet" />
-		<script async defer data-domain="orni.sciolyid.org" src="https://stats.sciolyid.org/js/index.js"></script>
-		<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-		<script>
-			window.setState = function () {
-				const toggle = document.querySelector('#toggle')
-				const classes = document.querySelector('html').classList
-				if (
-					localStorage.theme === 'dark' ||
-					(!('theme' in localStorage) &&
-					window.matchMedia('(prefers-color-scheme: dark)').matches)
-				) {
-					classes.add('night')
-				} else {
-					classes.remove('night')
-				}
-				if (toggle) {
-					if (classes.contains('night')) {
-						toggle.classList.add('active') 
-					} else {
-						toggle.classList.remove('active') 
-					}
-				}
-			}
-			setState()
-		</script>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bird-ID | Practice</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link href="/use.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=block"
+      rel="stylesheet"
+    />
+    <script
+      async
+      defer
+      data-domain="orni.sciolyid.org"
+      src="https://stats.sciolyid.org/js/index.js"
+    ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          ;(window.plausible.q = window.plausible.q || []).push(arguments)
+        }
+    </script>
+    <script>
+      window.setState = function () {
+        const toggle = document.querySelector('#toggle')
+        const classes = document.querySelector('html').classList
+        if (
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          classes.add('night')
+        } else {
+          classes.remove('night')
+        }
+        if (toggle) {
+          if (classes.contains('night')) {
+            toggle.classList.add('active')
+          } else {
+            toggle.classList.remove('active')
+          }
+        }
+      }
+      setState()
+    </script>
+  </head>
 
-	<body onload="pageLoad()">
-		<!-- navigation bar -->
-		<div id="navigator">
-			<span id="title"><strong>Bird-ID</strong> - a website for aspiring ornithologists</span>
-			<div id="toggle" class="active"><div id="toggle-button"></div></div>
-			<a href="/" class="nav-link"> About </a>
-			<a href="/contact/" class="nav-link"> Contact </a>
-			<a id="login-button" class="button nav-link" onclick="login()"><strong>Login</strong></a>
-			<div id="profile">
-				<button id="profile-button" onclick="toggleProfile()">
-					<img id="profile-pic" alt="Profile Picture" height="40px" />&#x25BC;
-				</button>
-				<div id="profile-dropdown">
-					<div id="login-text">Logged in as</div>
-					<div id="profile-name"></div>
-					<a id="logout-button" class="button" onclick="logout()"><strong>Logout</strong></a>
-				</div>
-			</div>
-		</div>
-		<div id="main">
-			<div class="status"></div>
-			<div class="media"></div>
-			<input id="guess" type="text" />
-			<div id="controls">
-				<button id="check" onclick="check()">Check</button>
-				<button id="refresh" onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)">
-					Refresh
-				</button>
-				<button id="skip" onclick="skip()">Skip</button>
-				<button id="hint" onclick="hint()">Hint</button>
-				<button id="options" onclick='toggleOptions()'>
-					Options
-				</button>
-			</div>
-			<div id="options-menu">
-				<form id="options-form">
-					<h2 id="options-header">Options</h2>
-					<div id="media-type-field">
-						<span>Media Type:</span>
-						<select id="media-type" name="mediaType" onchange="onMediaTypeChange()">
-							<option value="images">Images</option>
-							<option value="songs">Songs</option>
-						</select>
-					</div>
-					<!--<h4>Black and White (for images)</h4>-->
-					<div id="bw-field"><input id="bw" type="checkbox" name="bw" /> Black and white?</div>
-					<div id="addons-field">
-						<span>Addons:</span>
-						<select id="addons" name="addons">
-							<option value="">None</option>
-							<option value="female">Female</option>
-							<option value="juvenile">Juvenile</option>
-						</select>
-					</div>
-				</form>
-				<button id="save" onclick="updateOptions()">
-					Save Changes
-				</button>
-			</div>
-		</div>
-		<div id="stats">
-			<h2 id="stats-header">Stats:</h2>
-			<p id="correct">Correct</p>
-			<p id="total">Total</p>
-			<p id="streak">in a row</p>
-		</div>
-		<noscript>
-			<style>
-				#main,
-				#stats,
-				#toggle,
-				#profile {
-					display: none;
-				}
-			</style>
-			Please turn on Javascript or use a different browser.
-		</noscript>
-		<script src='https://js.sentry-cdn.com/dfe005fb9f5f419c9b849c8c01b73b7a.min.js' crossorigin="anonymous"></script>
+  <body onload="pageLoad()">
+    <!-- navigation bar -->
+    <div id="navigator">
+      <span id="title"
+        ><strong>Bird-ID</strong> - a website for aspiring ornithologists</span
+      >
+      <div id="toggle" class="active"><div id="toggle-button"></div></div>
+      <a href="/" class="nav-link"> About </a>
+      <a href="/contact/" class="nav-link"> Contact </a>
+      <a id="login-button" class="button nav-link" onclick="login()"
+        ><strong>Login</strong></a
+      >
+      <div id="profile">
+        <button id="profile-button" onclick="toggleProfile()">
+          <img id="profile-pic" alt="Profile Picture" height="40px" />&#x25BC;
+        </button>
+        <div id="profile-dropdown">
+          <div id="login-text">Logged in as</div>
+          <div id="profile-name"></div>
+          <a id="logout-button" class="button" onclick="logout()"
+            ><strong>Logout</strong></a
+          >
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="status"></div>
+      <div class="media"></div>
+      <input id="guess" type="text" />
+      <div id="controls">
+        <button id="check" onclick="check()">Check</button>
+        <button
+          id="refresh"
+          onclick="setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon)"
+        >
+          Refresh
+        </button>
+        <button id="skip" onclick="skip()">Skip</button>
+        <button id="hint" onclick="hint()">Hint</button>
+        <button id="options" onclick="toggleOptions()">Options</button>
+      </div>
+      <div id="options-menu">
+        <form id="options-form">
+          <h2 id="options-header">Options</h2>
+          <div id="media-type-field">
+            <span>Media Type:</span>
+            <select
+              id="media-type"
+              name="mediaType"
+              onchange="onMediaTypeChange()"
+            >
+              <option value="images">Images</option>
+              <option value="songs">Songs</option>
+            </select>
+          </div>
+          <!--<h4>Black and White (for images)</h4>-->
+          <div id="bw-field">
+            <input id="bw" type="checkbox" name="bw" /> Black and white?
+          </div>
+          <div id="addons-field">
+            <span>Addons:</span>
+            <select id="addons" name="addons">
+              <option value="">None</option>
+              <option value="female">Female</option>
+              <option value="juvenile">Juvenile</option>
+            </select>
+          </div>
+        </form>
+        <button id="save" onclick="updateOptions()">Save Changes</button>
+      </div>
+    </div>
+    <div id="stats">
+      <h2 id="stats-header">Stats:</h2>
+      <p id="correct">Correct</p>
+      <p id="total">Total</p>
+      <p id="streak">in a row</p>
+    </div>
+    <noscript>
+      <style>
+        #main,
+        #stats,
+        #toggle,
+        #profile {
+          display: none;
+        }
+      </style>
+      Please turn on Javascript or use a different browser.
+    </noscript>
+    <script
+      src="https://js.sentry-cdn.com/dfe005fb9f5f419c9b849c8c01b73b7a.min.js"
+      crossorigin="anonymous"
+    ></script>
 
-		<script>
-			setState()
-			let toggle = document.getElementById("toggle");
-			toggle.addEventListener("click", function() {
-				localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
-				setState()
-			});
-		</script>
-		<script src="/use.js"></script>
-	</body>
+    <script>
+      setState()
+      let toggle = document.getElementById('toggle')
+      toggle.addEventListener('click', function () {
+        localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
+        setState()
+      })
+    </script>
+    <script src="/use.js"></script>
+  </body>
 </html>

@@ -278,6 +278,7 @@ function updateOptions() {
 	qs("#options-menu").hidden = true;
 	setMedia(mediaOptions.media, mediaOptions.bw, mediaOptions.addon);
 }
+
 function onMediaTypeChange() {
 	if (qs("#media-type").value === "images") {
 		qs("#bw-field").hidden = false;
@@ -287,10 +288,12 @@ function onMediaTypeChange() {
 		qs("#addons-field").hidden = true;
 	}
 }
+
 function toggleProfile() {
 	let dropdown = qs("#profile-dropdown");
 	dropdown.style.display = dropdown.style.display == "none" ? "flex" : "none";
 }
+
 function toggleOptions() {
 	let menu = qs("#options-menu")
 	menu.hidden = !menu.hidden
