@@ -291,3 +291,7 @@ function toggleProfile() {
 	let dropdown = qs("#profile-dropdown");
 	dropdown.style.display = dropdown.style.display == "none" ? "flex" : "none";
 }
+function toggleOptions() {
+	let menu = qs("#options-menu")
+	menu.hidden = !menu.hidden
+}
