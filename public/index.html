@@ -1,100 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Bird-ID | About</title>
-		<link href="/style.css" rel="stylesheet" type="text/css" />
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
-		<script async defer data-domain="orni.sciolyid.org" src="https://stats.sciolyid.org/js/index.js"></script>
-		<script>
-			window.setState = function () {
-				const toggle = document.querySelector('#toggle')
-				const classes = document.querySelector('html').classList
-				if (
-					localStorage.theme === 'dark' ||
-					(!('theme' in localStorage) &&
-					window.matchMedia('(prefers-color-scheme: dark)').matches)
-				) {
-					classes.add('night')
-				} else {
-					classes.remove('night')
-				}
-				if (toggle) {
-					if (classes.contains('night')) {
-						toggle.classList.add('active') 
-					} else {
-						toggle.classList.remove('active') 
-					}
-				}
-			}
-			setState()
-		</script>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bird-ID | About</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      async
+      defer
+      data-domain="orni.sciolyid.org"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+    <script>
+      window.setState = function () {
+        const toggle = document.querySelector('#toggle')
+        const classes = document.querySelector('html').classList
+        if (
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          classes.add('night')
+        } else {
+          classes.remove('night')
+        }
+        if (toggle) {
+          if (classes.contains('night')) {
+            toggle.classList.add('active')
+          } else {
+            toggle.classList.remove('active')
+          }
+        }
+      }
+      setState()
+    </script>
+  </head>
 
-	<body>
-		<!-- navigation bar -->
-		<div id="navigator">
-			<span id="title"><strong>Bird-ID</strong> - a website for aspiring ornithologists</span>
-			<div id="toggle" class="active"><div id="toggle-button"></div></div>
-			<a href="/" class="nav-link"> About </a>
-			<a href="/contact/" class="nav-link"> Contact </a>
-			<a href="/use/" id="use-button" class="button nav-link"><strong> Use! </strong></a>
-		</div>
+  <body>
+    <!-- navigation bar -->
+    <div id="navigator">
+      <span id="title"
+        ><strong>Bird-ID</strong> - a website for aspiring ornithologists</span
+      >
+      <div id="toggle" class="active"><div id="toggle-button"></div></div>
+      <a href="/" class="nav-link"> About </a>
+      <a href="/contact/" class="nav-link"> Contact </a>
+      <a href="/use/" id="use-button" class="button nav-link"
+        ><strong> Use! </strong></a
+      >
+    </div>
 
-		<div id="info">
-			<h2>Usage</h2>
-			<div>
-				<p>
-					This bot uses bird images and sounds from Cornell's Maucalay Library to help you practice
-					identifying them!
-				</p>
-				<p>Discord Commands:</p>
-				<ul>
-					<li>Type <mark>b!b</mark> or <mark>b.b</mark> for a new bird.</li>
-					<li>Type <mark>b!c (answer)</mark> or <mark>b.c (answer)</mark> to check your answer.</li>
-					<li>Type <mark>b!s</mark> or <mark>b.s</mark> for a bird call.</li>
-					<li>Type <mark>b!cs (answer)</mark> or <mark>b.cs (answer)</mark> to check the song.</li>
-				</ul>
-			</div>
-			<h2>Creators</h2>
-			<div>
-				<p>
-					This code was written by Person_v1.32 (person_v1.32#7883), hmmm (hmmm#5658), and EraserBird
-					(EraserBird#0520). They are all students who enjoy participating in Science Olympiad and writing
-					code!
-				</p>
-				<p>The code can be found on Github:</p>
-				<p><a href="https://github.com/tctree333/Bird-ID">Discord Bot</a></p>
-				<p><a href="https://github.com/tctree333/Bird-ID-site/"> Website</a></p>
-			</div>
-			<h2>Science Olympiad</h2>
-			<div>
-				<p>
-					Science Olympiad is an academic competition for K12 students where they compete in a variety of
-					science and engineering topics.
-				</p>
-				<p>
-					This bot was written based off the Science Olympiad's National Bird List. This bot is not affiliated
-					with Science Olympiad. The official page for SciOly is <a href="https://soinc.org">here</a>.
-				</p>
-			</div>
-		</div>
-		<script>
-			setState()
-			let toggle = document.getElementById("toggle");
-			toggle.addEventListener("click", function() {
-				localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
-				setState()
-			});
-		</script>
-		<noscript>
-			<!--day/night toggle relies on js; hide it if there's no js-->
-			<style>
-				#toggle {
-					display: none;
-				}
-			</style>
-		</noscript>
-	</body>
+    <div id="info">
+      <h2>Usage</h2>
+      <div>
+        <p>
+          This bot uses bird images and sounds from Cornell's Maucalay Library
+          to help you practice identifying them!
+        </p>
+        <p>Discord Commands:</p>
+        <ul>
+          <li>Type <mark>b!b</mark> or <mark>b.b</mark> for a new bird.</li>
+          <li>
+            Type <mark>b!c (answer)</mark> or <mark>b.c (answer)</mark> to check
+            your answer.
+          </li>
+          <li>Type <mark>b!s</mark> or <mark>b.s</mark> for a bird call.</li>
+          <li>
+            Type <mark>b!cs (answer)</mark> or <mark>b.cs (answer)</mark> to
+            check the song.
+          </li>
+        </ul>
+      </div>
+      <h2>Creators</h2>
+      <div>
+        <p>
+          This code was written by Person_v1.32 (person_v1.32#7883), hmmm
+          (hmmm#5658), and EraserBird (EraserBird#0520). They are all students
+          who enjoy participating in Science Olympiad and writing code!
+        </p>
+        <p>The code can be found on Github:</p>
+        <p><a href="https://github.com/tctree333/Bird-ID">Discord Bot</a></p>
+        <p><a href="https://github.com/tctree333/Bird-ID-site/"> Website</a></p>
+      </div>
+      <h2>Science Olympiad</h2>
+      <div>
+        <p>
+          Science Olympiad is an academic competition for K12 students where
+          they compete in a variety of science and engineering topics.
+        </p>
+        <p>
+          This bot was written based off the Science Olympiad's National Bird
+          List. This bot is not affiliated with Science Olympiad. The official
+          page for SciOly is <a href="https://soinc.org">here</a>.
+        </p>
+      </div>
+    </div>
+    <script>
+      setState()
+      let toggle = document.getElementById('toggle')
+      toggle.addEventListener('click', function () {
+        localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
+        setState()
+      })
+    </script>
+    <noscript>
+      <!--day/night toggle relies on js; hide it if there's no js-->
+      <style>
+        #toggle {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </body>
 </html>
