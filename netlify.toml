@@ -1,4 +1,14 @@
 [[redirects]]
+  from = "/server"
+  to = "https://discord.gg/fXxYyDJ"
+  status = 301
+
+[[redirects]]
+  from = "/invite"
+  to = "https://discord.com/api/oauth2/authorize?client_id=601917808137338900&permissions=268486656&scope=bot"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/status/404/"
   status = 404
