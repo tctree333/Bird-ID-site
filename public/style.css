@@ -49,6 +49,7 @@ html.night #navigator {
 }
 #title {
   flex-grow: 1;
+  color: white;
 }
 #links {
   float: right;
