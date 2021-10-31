@@ -1,15 +1,14 @@
 * {
   font-family: 'Source Sans Pro', sans-serif;
+  transition: 0.5s;
 }
 
 html.night body {
   background-color: #001a25;
-  transition: 0.5s;
 }
 
 body {
   background-color: white;
-  transition: 0.5s;
 }
 
 a {
@@ -18,12 +17,9 @@ a {
 }
 
 a:hover {
-  color: rgb(255, 138, 160);
+  text-decoration: underline;
 }
 
-a:visited {
-  color: rgb(212, 57, 86);
-}
 /*all navigator stuff*/
 #navigator {
   display: flex;
@@ -38,14 +34,12 @@ a:visited {
   background-color: white;
   border-bottom: solid black 2px;
   color: black;
-  transition: 0.5s;
 }
 
 html.night #navigator {
   background-color: #00151f;
   border-bottom: solid white 2px;
   color: white;
-  transition: 0.5s;
 }
 #title {
   flex-grow: 1;
@@ -62,7 +56,6 @@ html.night #navigator {
   margin: max(5px, 0.5%);
   padding: 0.5%;
   color: black;
-  transition: 0.5s;
 }
 
 .nav-link:visited {
@@ -70,7 +63,6 @@ html.night #navigator {
 }
 html.night .nav-link {
   color: white;
-  transition: 0.5s;
 }
 
 .button {
@@ -81,13 +73,12 @@ html.night .nav-link {
   padding-right: 3%;
   padding-left: 3%;
   border-radius: 5px;
-  transition: 0.5s;
+
   text-align: center;
 }
 
 html.night .button strong {
   color: black;
-  transition: 0.5s;
 }
 
 .button:hover {
@@ -106,7 +97,8 @@ html.night .button strong {
 }
 #info p,
 #info h1,
-#info h2 {
+#info h2,
+#info h3 {
   margin: 0.7em 0 0.5em;
 }
 
@@ -114,13 +106,25 @@ html.night body {
   color: white;
 }
 
-h2 {
+h2,
+h3 {
   color: #ff4365;
 }
 
-mark {
-  color: #ff4365;
-  background-color: transparent;
+code {
+  color: #443f4b;
+  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+html.night code {
+  color: #c4bfca;
+}
+code::before {
+  content: '\`';
+}
+code::after {
+  content: '\`';
 }
 
 /* day night toggle */
@@ -133,7 +137,6 @@ mark {
   height: 20px;
   cursor: pointer;
   border-radius: 20px;
-  transition: 0.5s;
 }
 
 #toggle.active {
@@ -150,7 +153,6 @@ mark {
   height: 16px;
   background: #00151f;
   border-radius: 50%;
-  transition: 0.5s;
 }
 
 #toggle.active > #toggle-button {
