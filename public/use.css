@@ -1,147 +1,153 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 20px;
+  max-width: 100%;
+}
+
 #main {
-	display: flex;
-	flex-direction: column;
-}
-
-#side {
-	float: right;
-	width: 40%;
-}
-
-#side h2 {
-	color: black;
-	text-align: center;
+  max-width: 100%;
+  flex: 1;
 }
 
 .profile {
-	display: inline-block;
+  display: inline-block;
+}
+
+.media {
+  height: 50vh;
+  display: grid;
+  place-items: center;
+}
+
+.status {
+  height: 50px;
+}
+.status p {
+  margin: 0;
 }
 
 .media img {
-	width: auto;
-	height: 20em;
-	margin: 5px 0;
+  width: auto;
+  max-width: 100%;
+  max-height: 48vh;
+  display: block;
 }
 
 #guess {
-	flex-basis: 40%;
-	flex-grow: 1;
-	width: 40%;
-	padding: 1%;
-	font-size: 140%;
-	float: left;
-	margin-right: 3px;
-	margin-bottom: 3px;
+  display: block;
+  width: 720px;
+  max-width: 100%;
+  font-size: 1.5rem;
+  padding: 0.75rem;
+  margin: 5px auto;
 }
 
 #controls {
-	display: inline-flex;
-	align-items: center;
-	flex-wrap: wrap;
-}
-input[type="submit"],
-button,
-#profile-dropdown {
-	background-color: #00e8cc;
-	text-decoration: none;
-	border: none;
-	padding: 0.5% 2%;
-	margin: 3px;
-	font-size: 110%;
-	border-radius: 5px;
-	text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-input[type="submit"]:hover,
+#stats {
+  font-size: 1.2em;
+  margin-top: 48px;
+  min-width: max-content;
+  width: 25vw;
+}
+
+input[type='submit'],
+button,
+#profile-dropdown {
+  background-color: #00e8cc;
+  text-decoration: none;
+  border: none;
+  padding: 8px 24px;
+  margin: 3px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  text-align: center;
+}
+
+input[type='submit']:hover,
 button:hover {
-	background-color: rgb(8, 170, 151);
+  background-color: rgb(8, 170, 151);
 }
 
 #save {
-	margin-top: 0.5%;
+  margin-top: 0.5%;
 }
 
 #options-header,
 #stats-header {
-	margin-block-start: 0.5em;
-	margin-block-end: 0.5em;
-	font-size: 115%;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  font-size: 115%;
 }
 
 p {
-	margin-block-start: 0.5em;
-	margin-block-end: 0.5em;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
 }
 
 #login-button {
-	color: black;
+  color: black;
 }
 
 /* profile stuff*/
 #profile {
-	position: relative;
+  position: relative;
 }
 #profile-pic {
-	border-radius: 5px;
-	margin: 3px;
+  border-radius: 5px;
+  margin: 3px;
 }
 
 #profile-button {
-	display: flex;
-	align-items: center;
-	font-size: 80%;
+  display: flex;
+  align-items: center;
+  font-size: 80%;
 }
 
 #profile-button.active {
-	border-bottom-left-radius: 0;
-	margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: 0;
 }
 
 #profile-dropdown {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	position: absolute;
-	left: auto;
-	right: 0;
-	z-index: 1;
-	padding: 0;
-	margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: auto;
+  right: 0;
+  z-index: 1;
+  padding: 0;
+  margin-top: 2px;
 }
 
 #logout-button {
-	align-self: stretch;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-top: 1.5px solid #e1e4e8;
-	padding: 1%;
-	font-size: 80%;
+  align-self: stretch;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 1.5px solid #e1e4e8;
+  padding: 1%;
+  font-size: 80%;
 }
 
 #login-text,
 #profile-name {
-	color: black;
-	font-size: 60%;
-	margin: 0 3px;
-	padding: 0 2px;
-	text-align: center;
+  color: black;
+  font-size: 60%;
+  margin: 0 3px;
+  padding: 0 2px;
+  text-align: center;
 }
 #profile-button,
 #profile-dropdown {
-	display: none;
-}
-/* small screen stuff */
-@media (max-width: 480px) {
-	#guess {
-		align-self: stretch;
-		width: 95%;
-	}
-	.media img {
-		width: 95vw;
-		height: auto;
-	}
-	#navigator {
-		font-size: 95%;
-	}
+  display: none;
 }

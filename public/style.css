@@ -1,6 +1,8 @@
 * {
   font-family: 'Source Sans Pro', sans-serif;
-  transition: 0.5s;
+  transition-property: background-color, color, border-bottom;
+  transition-duration: 0.5s;
+  box-sizing: border-box;
 }
 
 html.night body {
@@ -129,6 +131,7 @@ code::after {
 
 /* day night toggle */
 #toggle {
+  box-sizing: content-box;
   flex-basis: 45px;
   align-self: center;
   background: #fff;
