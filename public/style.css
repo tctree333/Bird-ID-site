@@ -28,7 +28,6 @@ a:hover {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  width: 98%;
   padding: 1%;
   margin-top: 0%;
   z-index: 1000;
@@ -161,4 +160,28 @@ code::after {
 #toggle.active > #toggle-button {
   left: 27px;
   background: #fff;
+}
+
+/* Fundraiser banner */
+aside {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 20px 24px;
+  background-color: #fcd34d;
+  color: #78350f;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  border-radius: 6px;
+}
+aside a {
+  color: inherit;
+  text-decoration: underline;
+}
+aside a.cta {
+  display: block;
+  margin: 4px auto 0;
+  width: max-content;
+  border: 2px solid #78350f;
+  padding: 8px 12px;
+  border-radius: 4px;
 }
