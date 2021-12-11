@@ -1,234 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Bird-ID | About</title>
-  <link href="/style.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
-  <script async defer data-domain="orni.sciolyid.org" src="https://plausible.io/js/plausible.js"></script>
-  <script>
-    window.setState = function () {
-      const toggle = document.querySelector('#toggle')
-      const classes = document.querySelector('html').classList
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        classes.add('night')
-      } else {
-        classes.remove('night')
-      }
-      if (toggle) {
-        if (classes.contains('night')) {
-          toggle.classList.add('active')
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bird-ID | About</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      async
+      defer
+      data-domain="orni.sciolyid.org"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+    <script>
+      window.setState = function () {
+        const toggle = document.querySelector('#toggle')
+        const classes = document.querySelector('html').classList
+        if (
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          classes.add('night')
         } else {
-          toggle.classList.remove('active')
+          classes.remove('night')
+        }
+        if (toggle) {
+          if (classes.contains('night')) {
+            toggle.classList.add('active')
+          } else {
+            toggle.classList.remove('active')
+          }
         }
       }
-    }
-    setState()
-  </script>
-</head>
-
-<body>
-  <!-- navigation bar -->
-  <div id="navigator">
-    <a href="/" id="title"><strong>Bird-ID</strong> - a website for aspiring ornithologists</a>
-    <div id="toggle" class="active">
-      <div id="toggle-button"></div>
-    </div>
-    <a href="/server/" class="nav-link">Discord Server</a>
-    <a href="/invite/" class="nav-link">Add Bird-ID!</a>
-    <a href="/use/" id="use-button" class="button nav-link"><strong> Use! </strong></a>
-  </div>
-  <aside>
-    <strong>SciOly-ID needs your help!</strong> The SciOly-ID Fall/Winter/idkseasons Fundraiser is on until Dec.
-    13! We need your support to keep these bots running into the next year. If we aren't able to raise enough money,
-    all
-    SciOlyID bots, including this website, will be shut down. For more information, visit our <a
-      href="https://discord.gg/fXxYyDJ">support server</a>.<br><a class="cta"
-      href="https://ko-fi.com/person_v132"><strong>Donate
-        Here!</strong>
-    </a>
-  </aside>
-  <div id="info">
-    <h1>Hello! Thanks for checking out Bird-ID, a website/Discord bot for aspiring ornithologists.</h1>
-    <p>You probably want to <a href="/invite/">join our Discord server</a>, <a href="/server/">add
-        this bot to an existing server</a>, or <a href="/use/">practice on the web</a>.</p>
-    <div>
-      <h2>Usage</h2>
-      <p>
-        This bot uses bird images and sounds from <a href="https://www.macaulaylibrary.org/">Cornell's Macaulay
-          Library</a>
-        to help you practice bird identification!
-      </p>
-      <p>Discord Prefixes (case insensitive): <code>b!</code>, <code>b.</code>, <code>b#</code>, <code>o></code></p>
-      <h3>Quickstart:</h3>
-      <ul>
-        <li>Use <code>b!bird</code> or <code>b!b</code> for a new bird image.</li>
-        <li>
-          Use <code>b!check [answer]</code> or <code>b!c [answer]</code> to check
-          your answer.
-        </li>
-        <li>Use <code>b!hint</code> or <code>b!h</code> to get a hint.</li>
-        <li>Use <code>b!skip</code> or <code>b!sk</code> to skip the current bird.</li>
-      </ul>
-      <p>See the <a href="#full">full help text</a> for info on available commands.</p>
-    </div>
-    <div>
-      <h2>Creators</h2>
-      <p>
-        This bot was created by person_v1.32#7883, hmmm#5658, and EraserBird#0520. They are all students
-        who enjoy participating in Science Olympiad and writing code!
-      </p>
-      <p>The source code for the
-        <a href="https://github.com/tctree333/Bird-ID">Discord Bot</a> and this <a
-          href="https://github.com/tctree333/Bird-ID-site/">website</a> can be found on Github.
-      </p>
-    </div>
-    <div>
-      <h2>Science Olympiad</h2>
-      <p>
-        Science Olympiad is an academic competition for K-12 students where
-        they compete in a variety of science and engineering topics.
-      </p>
-      <p>
-        This bot was originally created for the Science Olympiad's Ornitholigy event and its National Bird
-        List, but can be adapted with custom bird lists for other purposes. This bot is not affiliated with Science
-        Olympiad. Visit <a href="https://soinc.org">SOINC's official website</a> for more information about Science
-        Olympiad and the
-        Ornithology event.
-      </p>
-    </div>
-    <div>
-      <h2 id="full">Full Help Text:</h2>
-      <ul>
-        <li>
-          <p>Birds</p>
-          <ul>
-            <li><code>bird</code> - Sends a random bird images for you to ID</li>
-            <li><code>goatsucker</code> - Sends a random goatsucker to ID</li>
-            <li><code>song</code> - Sends a random bird song for you to ID</li>
-          </ul>
-        </li>
-        <li>
-          <p>Check:</p>
-          <ul>
-            <li><code>check</code> - Checks your answer</li>
-          </ul>
-        </li>
-        <li>
-          <p>Hint:</p>
-          <ul>
-            <li><code>hint</code> - Gives first letter of current bird</li>
-          </ul>
-        </li>
-        <li>
-          <p>Meta:</p>
-          <ul>
-            <li><code>botinfo</code> - Gives info on bot, support server invite, stats</li>
-            <li><code>ignore</code> - Ignore all commands in a channel</li>
-            <li><code>invite</code> - Get the invite link for this bot</li>
-            <li><code>leave</code> - Remove the bot from the guild</li>
-            <li><code>ping</code> - Pings the bot and displays latency</li>
-          </ul>
-        </li>
-        <li>
-          <p>Other:</p>
-          <ul>
-            <li><code>filters</code> - Lists available Macaulay Library filters.</li>
-            <li><code>info</code> - Gives an image and call of a bird</li>
-            <li><code>list</code> - DMs the user with the appropriate bird list.</li>
-            <li><code>meme</code> - Sends a funny bird video!</li>
-            <li><code>taxon</code> - DMs the user with the appropriate bird list.</li>
-            <li><code>wikipedia</code> - Fetch the wikipedia page for any given argument</li>
-          </ul>
-        </li>
-        <li>
-          <p>Race:</p>
-          <ul>
-            <li><code>race</code> - Base race command</li>
-          </ul>
-        </li>
-        <li>
-          <p>Score:</p>
-          <ul>
-            <li><code>leaderboard</code> - Top scores</li>
-            <li><code>missed</code> - Top incorrect birds</li>
-            <li><code>score</code> - Total correct answers in a channel or server</li>
-            <li><code>streak</code> - Gives your current/max streak</li>
-            <li><code>userscore</code> - How many correct answers given by a user</li>
-          </ul>
-        </li>
-        <li>
-          <p>Sessions:</p>
-          <ul>
-            <li><code>session</code> - Base session command</li>
-          </ul>
-        </li>
-        <li>
-          <p>Skip:</p>
-          <ul>
-            <li><code>skip</code> - Skip the current bird to get a new one</li>
-          </ul>
-        </li>
-        <li>
-          <p>States:</p>
-          <ul>
-            <li><code>custom</code> - Sets your custom bird list</li>
-            <li><code>set</code> - Sets your state</li>
-          </ul>
-        </li>
-        <li>
-          <p>Stats:</p>
-          <ul>
-            <li><code>export</code> - Exports bot data as a csv</li>
-            <li><code>frequency</code> - Gives info on command/bird frequencies</li>
-            <li><code>stats</code> - Gives statistics on different topics</li>
-          </ul>
-        </li>
-        <li>
-          <p>Voice:</p>
-          <ul>
-            <li><code>back</code> - Skip back 5 seconds</li>
-            <li><code>disconnect</code> - Disconnect from voice</li>
-            <li><code>forward</code> - Skip forward 5 seconds</li>
-            <li><code>pause</code> - Pause playing</li>
-            <li><code>play</code> - Play a sound</li>
-            <li><code>replay</code> - Replay</li>
-            <li><code>stop</code> - Stop playing</li>
-          </ul>
-        </li>
-        <li>
-          <p>No Category:</p>
-          <ul>
-            <li><code>help</code> - Shows this message</li>
-          </ul>
-        </li>
-      </ul>
-      <p>Type <code>b!help</code> command for more info on a command.
-        You can also type <code>b!help [category]</code> for more info on a category.</p>
-    </div>
-  </div>
-  <script>
-    setState()
-    let toggle = document.getElementById('toggle')
-    toggle.addEventListener('click', function () {
-      localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
       setState()
-    })
-  </script>
-  <noscript>
-    <!--day/night toggle relies on js; hide it if there's no js-->
-    <style>
-      #toggle {
-        display: none;
-      }
-    </style>
-  </noscript>
-</body>
+    </script>
+  </head>
 
+  <body>
+    <!-- navigation bar -->
+    <div id="navigator">
+      <a href="/" id="title"
+        ><strong>Bird-ID</strong> - a website for aspiring ornithologists</a
+      >
+      <div id="toggle" class="active">
+        <div id="toggle-button"></div>
+      </div>
+      <a href="/server/" class="nav-link">Discord Server</a>
+      <a href="/invite/" class="nav-link">Add Bird-ID!</a>
+      <a href="/use/" id="use-button" class="button nav-link"
+        ><strong> Use! </strong></a
+      >
+    </div>
+    <div id="info">
+      <h1>
+        Hello! Thanks for checking out Bird-ID, a website/Discord bot for
+        aspiring ornithologists.
+      </h1>
+      <p>
+        You probably want to <a href="/invite/">join our Discord server</a>,
+        <a href="/server/">add this bot to an existing server</a>, or
+        <a href="/use/">practice on the web</a>.
+      </p>
+      <div>
+        <h2>Usage</h2>
+        <p>
+          This bot uses bird images and sounds from
+          <a href="https://www.macaulaylibrary.org/"
+            >Cornell's Macaulay Library</a
+          >
+          to help you practice bird identification!
+        </p>
+        <p>
+          Discord Prefixes (case insensitive): <code>b!</code>, <code>b.</code>,
+          <code>b#</code>, <code>o></code>
+        </p>
+        <h3>Quickstart:</h3>
+        <ul>
+          <li>
+            Use <code>b!bird</code> or <code>b!b</code> for a new bird image.
+          </li>
+          <li>
+            Use <code>b!check [answer]</code> or <code>b!c [answer]</code> to
+            check your answer.
+          </li>
+          <li>Use <code>b!hint</code> or <code>b!h</code> to get a hint.</li>
+          <li>
+            Use <code>b!skip</code> or <code>b!sk</code> to skip the current
+            bird.
+          </li>
+        </ul>
+        <p>
+          See the <a href="#full">full help text</a> for info on available
+          commands.
+        </p>
+      </div>
+      <div>
+        <h2>Creators</h2>
+        <p>
+          This bot was created by person_v1.32#7883, hmmm#5658, and
+          EraserBird#0520. They are all students who enjoy participating in
+          Science Olympiad and writing code!
+        </p>
+        <p>
+          The source code for the
+          <a href="https://github.com/tctree333/Bird-ID">Discord Bot</a> and
+          this
+          <a href="https://github.com/tctree333/Bird-ID-site/">website</a> can
+          be found on Github.
+        </p>
+      </div>
+      <div>
+        <h2>Science Olympiad</h2>
+        <p>
+          Science Olympiad is an academic competition for K-12 students where
+          they compete in a variety of science and engineering topics.
+        </p>
+        <p>
+          This bot was originally created for the Science Olympiad's Ornitholigy
+          event and its National Bird List, but can be adapted with custom bird
+          lists for other purposes. This bot is not affiliated with Science
+          Olympiad. Visit
+          <a href="https://soinc.org">SOINC's official website</a> for more
+          information about Science Olympiad and the Ornithology event.
+        </p>
+      </div>
+      <div>
+        <h2 id="full">Full Help Text:</h2>
+        <ul>
+          <li>
+            <p>Birds</p>
+            <ul>
+              <li>
+                <code>bird</code> - Sends a random bird images for you to ID
+              </li>
+              <li><code>goatsucker</code> - Sends a random goatsucker to ID</li>
+              <li>
+                <code>song</code> - Sends a random bird song for you to ID
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Check:</p>
+            <ul>
+              <li><code>check</code> - Checks your answer</li>
+            </ul>
+          </li>
+          <li>
+            <p>Hint:</p>
+            <ul>
+              <li><code>hint</code> - Gives first letter of current bird</li>
+            </ul>
+          </li>
+          <li>
+            <p>Meta:</p>
+            <ul>
+              <li>
+                <code>botinfo</code> - Gives info on bot, support server invite,
+                stats
+              </li>
+              <li><code>ignore</code> - Ignore all commands in a channel</li>
+              <li><code>invite</code> - Get the invite link for this bot</li>
+              <li><code>leave</code> - Remove the bot from the guild</li>
+              <li><code>ping</code> - Pings the bot and displays latency</li>
+            </ul>
+          </li>
+          <li>
+            <p>Other:</p>
+            <ul>
+              <li>
+                <code>filters</code> - Lists available Macaulay Library filters.
+              </li>
+              <li><code>info</code> - Gives an image and call of a bird</li>
+              <li>
+                <code>list</code> - DMs the user with the appropriate bird list.
+              </li>
+              <li><code>meme</code> - Sends a funny bird video!</li>
+              <li>
+                <code>taxon</code> - DMs the user with the appropriate bird
+                list.
+              </li>
+              <li>
+                <code>wikipedia</code> - Fetch the wikipedia page for any given
+                argument
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Race:</p>
+            <ul>
+              <li><code>race</code> - Base race command</li>
+            </ul>
+          </li>
+          <li>
+            <p>Score:</p>
+            <ul>
+              <li><code>leaderboard</code> - Top scores</li>
+              <li><code>missed</code> - Top incorrect birds</li>
+              <li>
+                <code>score</code> - Total correct answers in a channel or
+                server
+              </li>
+              <li><code>streak</code> - Gives your current/max streak</li>
+              <li>
+                <code>userscore</code> - How many correct answers given by a
+                user
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Sessions:</p>
+            <ul>
+              <li><code>session</code> - Base session command</li>
+            </ul>
+          </li>
+          <li>
+            <p>Skip:</p>
+            <ul>
+              <li>
+                <code>skip</code> - Skip the current bird to get a new one
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>States:</p>
+            <ul>
+              <li><code>custom</code> - Sets your custom bird list</li>
+              <li><code>set</code> - Sets your state</li>
+            </ul>
+          </li>
+          <li>
+            <p>Stats:</p>
+            <ul>
+              <li><code>export</code> - Exports bot data as a csv</li>
+              <li>
+                <code>frequency</code> - Gives info on command/bird frequencies
+              </li>
+              <li><code>stats</code> - Gives statistics on different topics</li>
+            </ul>
+          </li>
+          <li>
+            <p>Voice:</p>
+            <ul>
+              <li><code>back</code> - Skip back 5 seconds</li>
+              <li><code>disconnect</code> - Disconnect from voice</li>
+              <li><code>forward</code> - Skip forward 5 seconds</li>
+              <li><code>pause</code> - Pause playing</li>
+              <li><code>play</code> - Play a sound</li>
+              <li><code>replay</code> - Replay</li>
+              <li><code>stop</code> - Stop playing</li>
+            </ul>
+          </li>
+          <li>
+            <p>No Category:</p>
+            <ul>
+              <li><code>help</code> - Shows this message</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Type <code>b!help</code> command for more info on a command. You can
+          also type <code>b!help [category]</code> for more info on a category.
+        </p>
+      </div>
+    </div>
+    <script>
+      setState()
+      let toggle = document.getElementById('toggle')
+      toggle.addEventListener('click', function () {
+        localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
+        setState()
+      })
+    </script>
+    <noscript>
+      <!--day/night toggle relies on js; hide it if there's no js-->
+      <style>
+        #toggle {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </body>
 </html>
