@@ -1,4 +1,16 @@
 [[redirects]]
+  from = "/use"
+  to = "https://sciolyid.org/bird-id/practice/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "https://sciolyid.org"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/server"
   to = "https://discord.gg/2HbshwGjnm"
   status = 301
